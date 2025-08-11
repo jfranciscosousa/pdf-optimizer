@@ -6,7 +6,8 @@
   "scripts": {
     "build": "vite build && tsc --noEmit",
     "dev": "vite dev",
-    "start": "node .output/server/index.mjs"
+    "start": "node .output/server/index.mjs",
+    "prepare": "husky"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.7",
@@ -30,9 +31,15 @@
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^5.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.5",
+    "prettier": "3.6.2",
     "tw-animate-css": "1.3.6",
     "typescript": "^5",
     "vite": "^7.1.1",
     "vite-tsconfig-paths": "^5.1.4"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }

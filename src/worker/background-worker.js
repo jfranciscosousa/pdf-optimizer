@@ -13,7 +13,7 @@ function _GSPS2PDF(dataStruct, responseCallback) {
       colorImageResolution: "300",
       grayscaleImageResolution: "300",
       monoImageResolution: "1200",
-      jpegQuality: "95"
+      jpegQuality: "95",
     },
     medium: {
       pdfSettings: "/ebook",
@@ -21,7 +21,7 @@ function _GSPS2PDF(dataStruct, responseCallback) {
       colorImageResolution: "150",
       grayscaleImageResolution: "150",
       monoImageResolution: "600",
-      jpegQuality: "85"
+      jpegQuality: "85",
     },
     heavy: {
       pdfSettings: "/screen",
@@ -29,8 +29,8 @@ function _GSPS2PDF(dataStruct, responseCallback) {
       colorImageResolution: "96",
       grayscaleImageResolution: "96",
       monoImageResolution: "300",
-      jpegQuality: "70"
-    }
+      jpegQuality: "70",
+    },
   };
 
   const config = levelConfigs[dataStruct.level] || levelConfigs.medium;

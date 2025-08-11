@@ -47,7 +47,7 @@ export function usePdfOptimization(): UsePdfOptimizationReturn {
         });
         const { pdfURL, size } = await loadPDFData(
           response,
-          `${file.name} optimized.pdf`
+          `${file.name} optimized.pdf`,
         );
         console.log(pdfURL, size);
         setData(pdfURL);
@@ -56,13 +56,13 @@ export function usePdfOptimization(): UsePdfOptimizationReturn {
         setError(
           err instanceof Error
             ? err.message
-            : "An error occurred during optimization"
+            : "An error occurred during optimization",
         );
       } finally {
         setIsLoading(false);
       }
     },
-    []
+    [],
   );
 
   return {

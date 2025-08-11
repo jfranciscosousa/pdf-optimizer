@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from "@tanstack/react-router";
 import type React from "react";
 import { useState } from "react";
 import { Button } from "~/components/ui/button";
@@ -24,9 +24,9 @@ import {
 import { usePdfOptimization } from "~/hooks/use-pdf-optimization";
 import { useLocale } from "~/hooks/use-locale";
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute("/")({
   component: Home,
-})
+});
 
 function Home() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -69,7 +69,7 @@ function Home() {
     if (selectedFile) {
       optimizePdf(
         selectedFile,
-        optimizationLevel as "light" | "medium" | "heavy"
+        optimizationLevel as "light" | "medium" | "heavy",
       );
     }
   };
@@ -154,7 +154,8 @@ function Home() {
                               {selectedFile.name}
                             </p>
                             <p className="text-green-600 text-sm">
-                              Size: {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
+                              Size:{" "}
+                              {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
                             </p>
                           </div>
                           <div className="flex gap-2">
@@ -206,15 +207,15 @@ function Home() {
                                 index === 0
                                   ? "bg-green-100 text-green-800"
                                   : index === 1
-                                  ? "bg-yellow-100 text-yellow-800"
-                                  : "bg-red-100 text-red-800"
+                                    ? "bg-yellow-100 text-yellow-800"
+                                    : "bg-red-100 text-red-800"
                               }`}
                             >
                               {index === 0
                                 ? "10-30%"
                                 : index === 1
-                                ? "30-60%"
-                                : "60-80%"}
+                                  ? "30-60%"
+                                  : "60-80%"}
                             </div>
                           </div>
                           <p className="text-gray-600 ml-6 mt-2">
@@ -250,11 +251,18 @@ function Home() {
                       {optimizedSize && (
                         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                           <p className="text-blue-800 font-medium">
-                            Optimized size: {(optimizedSize / 1024 / 1024).toFixed(2)} MB
+                            Optimized size:{" "}
+                            {(optimizedSize / 1024 / 1024).toFixed(2)} MB
                           </p>
                           {selectedFile && (
                             <p className="text-blue-600 text-sm">
-                              Reduction: {(((selectedFile.size - optimizedSize) / selectedFile.size) * 100).toFixed(1)}%
+                              Reduction:{" "}
+                              {(
+                                ((selectedFile.size - optimizedSize) /
+                                  selectedFile.size) *
+                                100
+                              ).toFixed(1)}
+                              %
                             </p>
                           )}
                         </div>
@@ -335,8 +343,9 @@ function Home() {
         </footer>
       </div>
 
-      <style dangerouslySetInnerHTML={{
-        __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes blob {
           0% {
             transform: translate(0px, 0px) scale(1);
@@ -360,7 +369,9 @@ function Home() {
         .animation-delay-4000 {
           animation-delay: 4s;
         }
-      `}} />
+      `,
+        }}
+      />
     </div>
   );
 }
