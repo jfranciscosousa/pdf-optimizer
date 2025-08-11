@@ -5,6 +5,9 @@ import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+  worker: {
+    format: "es",
+  },
   server: {
     port: 3000,
   },
