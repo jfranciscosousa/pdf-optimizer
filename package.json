@@ -6,7 +6,6 @@
   "scripts": {
     "build": "vite build && tsc --noEmit",
     "dev": "vite dev",
-    "lint": "next lint",
     "start": "node .output/server/index.mjs"
   },
   "dependencies": {
