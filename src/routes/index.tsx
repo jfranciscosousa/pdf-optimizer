@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type React from "react";
 import { useState } from "react";
+import { useDropzone } from "react-dropzone";
 import { Button } from "~/components/ui/button";
 import {
   Card,
@@ -9,7 +10,6 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
-import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import {
@@ -20,6 +20,7 @@ import {
   Shield,
   Infinity,
   Sparkles,
+  Upload,
 } from "lucide-react";
 import { usePdfOptimization } from "~/hooks/use-pdf-optimization";
 import { useLocale } from "~/hooks/use-locale";
@@ -58,12 +59,20 @@ function Home() {
     },
   ];
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
+  const onDrop = (acceptedFiles: File[]) => {
+    const file = acceptedFiles[0];
     if (file && file.type === "application/pdf") {
       setSelectedFile(file);
     }
   };
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: {
+      "application/pdf": [".pdf"],
+    },
+    multiple: false,
+  });
 
   const handleOptimize = () => {
     if (selectedFile) {
@@ -123,29 +132,30 @@ function Home() {
               </CardHeader>
               <CardContent className="p-8 pt-0 space-y-8">
                 <div className="space-y-4">
-                  <Label
-                    htmlFor="pdf-file"
-                    className="text-lg font-semibold text-gray-700"
-                  >
+                  <Label className="text-lg font-semibold text-gray-700">
                     {t.home.selectFile}
                   </Label>
                   <div className="relative">
-                    <Input
-                      id="pdf-file"
-                      type="file"
-                      accept="application/pdf"
-                      onChange={handleFileChange}
-                      className="sr-only"
-                    />
                     {!selectedFile ? (
-                      <label
-                        htmlFor="pdf-file"
-                        className="flex items-center justify-center cursor-pointer h-16 text-lg border-2 border-dashed border-gray-300 hover:border-blue-400 transition-colors bg-gray-50 hover:bg-blue-50 rounded-md"
+                      <div
+                        {...getRootProps()}
+                        className={`flex flex-col items-center justify-center cursor-pointer h-32 text-lg border-2 border-dashed transition-all rounded-lg ${
+                          isDragActive
+                            ? "border-blue-500 bg-blue-50 text-blue-700"
+                            : "border-gray-300 hover:border-blue-400 bg-gray-50 hover:bg-blue-50 text-gray-500"
+                        }`}
                       >
-                        <span className="text-gray-500">
-                          Drop your PDF here or click to browse
-                        </span>
-                      </label>
+                        <input {...getInputProps()} />
+                        <Upload className="h-8 w-8 mb-2" />
+                        <p className="text-center">
+                          {isDragActive
+                            ? "Drop your PDF here..."
+                            : "Drop your PDF here or click to browse"}
+                        </p>
+                        <p className="text-sm mt-1 opacity-75">
+                          Supports PDF files only
+                        </p>
+                      </div>
                     ) : (
                       <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                         <div className="flex items-center justify-between">
@@ -159,12 +169,13 @@ function Home() {
                             </p>
                           </div>
                           <div className="flex gap-2">
-                            <label
-                              htmlFor="pdf-file"
+                            <div
+                              {...getRootProps()}
                               className="text-sm text-blue-600 hover:text-blue-800 cursor-pointer underline"
                             >
+                              <input {...getInputProps()} />
                               Change
-                            </label>
+                            </div>
                             <button
                               type="button"
                               onClick={() => setSelectedFile(null)}
