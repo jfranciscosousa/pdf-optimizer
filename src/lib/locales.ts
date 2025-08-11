@@ -79,44 +79,44 @@ export const locales = {
     home: {
       title: "Otimizador de PDF",
       subtitle:
-        "Reduza o tamanho de arquivos PDF instantaneamente com nossa tecnologia de compressão avançada. Faça upload do seu PDF e escolha o nível de otimização para o equilíbrio perfeito entre qualidade e tamanho do arquivo.",
-      uploadTitle: "Enviar e Otimizar",
+        "Reduza o tamanho de ficheiros PDF instantaneamente com a nossa tecnologia de compressão avançada. Carregue o seu PDF e escolha o nível de optimização para o equilíbrio perfeito entre qualidade e tamanho do ficheiro.",
+      uploadTitle: "Carregar e Optimizar",
       uploadDescription:
-        "Escolha seu arquivo PDF e o nível de otimização para começar",
-      selectFile: "Selecionar Arquivo PDF",
-      selectedFile: "Arquivo selecionado",
-      optimizationLevel: "Nível de Otimização",
+        "Escolha o seu ficheiro PDF e o nível de optimização para começar",
+      selectFile: "Seleccionar Ficheiro PDF",
+      selectedFile: "Ficheiro seleccionado",
+      optimizationLevel: "Nível de Optimização",
       lightName: "Compressão Leve",
       lightDescription: "Compressão mínima com máxima retenção de qualidade",
       mediumName: "Compressão Média",
       mediumDescription:
         "Compressão equilibrada para a maioria dos casos de uso",
       heavyName: "Compressão Pesada",
-      heavyDescription: "Compressão máxima para menores tamanhos de arquivo",
-      optimizePdf: "Otimizar PDF",
-      optimizing: "Otimizando...",
-      downloadOptimized: "Baixar PDF Otimizado",
+      heavyDescription: "Compressão máxima para menores tamanhos de ficheiro",
+      optimizePdf: "Optimizar PDF",
+      optimizing: "A optimizar...",
+      downloadOptimized: "Descarregar PDF Optimizado",
       feature1Title: "Extremamente Rápido",
       feature1Description:
-        "Processe PDFs em segundos com nossos algoritmos otimizados",
+        "Processe PDFs em segundos com os nossos algoritmos optimizados",
       feature2Title: "Seguro e Privado",
       feature2Description:
-        "Seus arquivos são processados com segurança e nunca armazenados",
-      feature3Title: "Uso Ilimitado",
+        "Os seus ficheiros são processados com segurança e nunca armazenados",
+      feature3Title: "Utilização Ilimitada",
       feature3Description:
-        "Otimize quantos PDFs precisar, completamente gratuito",
+        "Optimize quantos PDFs precisar, completamente gratuito",
       privacyPolicy: "Política de Privacidade",
       poweredBy: "Powered by Ghostscript",
     },
     privacy: {
       title: "Política de Privacidade",
       subtitle:
-        "A sua privacidade é a nossa prioridade máxima. Aqui está exatamente como a protegemos.",
+        "A sua privacidade é a nossa prioridade máxima. Aqui está exactamente como a protegemos.",
       backToHome: "Voltar ao Início",
-      lastUpdated: "Última atualização",
+      lastUpdated: "Última actualização",
       localProcessingTitle: "Processamento Local",
       localProcessingContent:
-        "Toda a otimização de PDF acontece diretamente no seu navegador usando tecnologia WebAssembly. Os seus ficheiros são processados na memória e nunca transmitidos para qualquer servidor. Quando fecha a página, todos os dados são automaticamente descartados.",
+        "Toda a optimização de PDF acontece directamente no seu navegador usando tecnologia WebAssembly. Os seus ficheiros são processados na memória e nunca transmitidos para qualquer servidor. Quando fecha a página, todos os dados são automaticamente descartados.",
       noTrackingTitle: "Sem Rastreamento",
       noTrackingContent:
         "Não usamos análises, cookies, pixels de rastreamento ou scripts de terceiros. Não temos forma de o identificar ou rastrear o seu comportamento entre sessões. A sua utilização é completamente anónima.",
@@ -128,17 +128,17 @@ export const locales = {
         "O nosso código é transparente e auditável. Pode inspecionar exatamente como os seus ficheiros são processados e verificar que nenhum dado sai do seu dispositivo.",
       hostingTitle: "Divulgação de Hospedagem",
       hostingContent:
-        "Este website está hospedado na rede de distribuição de conteúdo da Vercel. Embora não recolhamos dados sobre si, a Vercel pode recolher análises básicas como:",
+        "Este sítio web está alojado na rede de distribuição de conteúdo da Vercel. Embora não recolhamos dados sobre si, a Vercel pode recolher análises básicas como:",
       hostingList: [
         "Visualizações de página e contagens de visitas",
         "Localização geográfica geral (nível país/região)",
         "Tipo de navegador e informações do dispositivo",
-        "Informações de referência (de que site veio)",
+        "Informações de referência (de que sítio veio)",
       ],
       hostingNote:
-        "Importante: Nenhum conteúdo de ficheiro, dados pessoais ou informações detalhadas de uso são transmitidos para a Vercel ou qualquer outro serviço.",
+        "Importante: Nenhum conteúdo de ficheiro, dados pessoais ou informações detalhadas de utilização são transmitidos para a Vercel ou qualquer outro serviço.",
       technicalTitle: "Implementação Técnica",
-      technicalContent: "O nosso otimizador de PDF usa:",
+      technicalContent: "O nosso optimizador de PDF usa:",
       technicalList: [
         "WebAssembly para processamento local de alto desempenho",
         "Web Workers para prevenir bloqueio do navegador",

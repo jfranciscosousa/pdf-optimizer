@@ -117,7 +117,7 @@ function PrivacyPage() {
           </Card>
 
           {/* Technical Implementation */}
-          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm">
+          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm pt-0">
             <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-t-lg py-4">
               <CardTitle className="flex items-center gap-2">
                 <Hammer className="h-5 w-5" />
@@ -136,8 +136,7 @@ function PrivacyPage() {
             </CardContent>
           </Card>
 
-          {/* Contact */}
-          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm pt-0">
+          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm pt-4">
             <CardHeader>
               <CardTitle>{t.privacy.contactTitle}</CardTitle>
             </CardHeader>

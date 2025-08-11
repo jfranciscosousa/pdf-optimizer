@@ -2,11 +2,13 @@ import { getHeaders } from "@tanstack/react-start/server";
 import acceptLanguage from "accept-language";
 import { createServerFn } from "@tanstack/react-start";
 
-const loadLanguage = createServerFn({ method: "GET" }).handler(async () => {
-  const acceptLanguageVal = getHeaders()["Accept-Language"];
-  const language = acceptLanguage.get(acceptLanguageVal)?.[0] || "en-US";
+acceptLanguage.languages(['en', 'pt']);
 
-  return language.split("-")[0];
+const loadLanguage = createServerFn({ method: "GET" }).handler(async () => {
+  const acceptLanguageVal = getHeaders()["Accept-Language"] || getHeaders()["accept-language"];
+  const language = acceptLanguage.get(acceptLanguageVal) || "en";
+
+  return language;
 });
 
 export default loadLanguage;
