@@ -77,7 +77,7 @@ export const locales = {
   },
   pt: {
     home: {
-      title: "Otimizador de PDF",
+      title: "Optimizador de PDF",
       subtitle:
         "Reduza o tamanho de ficheiros PDF instantaneamente com a nossa tecnologia de compressão avançada. Carregue o seu PDF e escolha o nível de optimização para o equilíbrio perfeito entre qualidade e tamanho do ficheiro.",
       uploadTitle: "Carregar e Optimizar",
