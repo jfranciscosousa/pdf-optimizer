@@ -41,6 +41,8 @@ pnpm build
 - Tailwind CSS
 - WebAssembly (Ghostscript)
 
+The project is deployed on Vercel, but the `cloudflare` folder which contains the `wasm` module is sent to Cloudflare to reside as static files. Egress is cheaper there.
+
 ## Privacy
 
 Your files are processed locally using WebAssembly. No data is sent to any server - everything happens in your browser and is automatically deleted when you close the page.
