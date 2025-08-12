@@ -27,7 +27,8 @@ export const locales = {
       feature1Description:
         "Process PDFs in seconds with our optimized algorithms",
       feature2Title: "Secure & Private",
-      feature2Description: "Your files are processed securely and never stored",
+      feature2Description:
+        "Your files are processed securely, offline and never leave your computer",
       feature3Title: "Unlimited Usage",
       feature3Description: "Optimize as many PDFs as you need, completely free",
       privacyPolicy: "Privacy Policy",
@@ -119,7 +120,7 @@ export const locales = {
         "Processe PDFs em segundos com os nossos algoritmos optimizados",
       feature2Title: "Seguro e Privado",
       feature2Description:
-        "Os seus ficheiros são processados com segurança e nunca armazenados",
+        "Os seus ficheiros são processados com segurança, offline e nunca saem do seu computador",
       feature3Title: "Utilização Ilimitada",
       feature3Description:
         "Optimize quantos PDFs precisar, completamente gratuito",
