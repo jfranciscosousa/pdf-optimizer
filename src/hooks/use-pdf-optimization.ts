@@ -1,7 +1,5 @@
-"use client";
-
 import { useState, useCallback } from "react";
-import { _GSPS2PDF } from "../worker/worker-init";
+import { optimizePdf as optimizePdfWorker } from "../worker/pdf-optimizer-worker";
 
 type OptimizationLevel = "light" | "medium" | "heavy";
 
@@ -41,7 +39,7 @@ export function usePdfOptimization(): UsePdfOptimizationReturn {
       setError(null);
 
       try {
-        const response = await _GSPS2PDF({
+        const response = await optimizePdfWorker({
           psDataURL: window.URL.createObjectURL(file),
           level,
         });
