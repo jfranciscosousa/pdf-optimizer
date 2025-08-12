@@ -33,6 +33,24 @@ export const locales = {
       privacyPolicy: "Privacy Policy",
       poweredBy: "Powered by Ghostscript",
     },
+    notFound: {
+      title: "404 - Page Not Found",
+      subtitle: "The page you're looking for doesn't exist",
+      description:
+        "The page you requested could not be found. It may have been moved, deleted, or you entered the wrong URL.",
+      backToHome: "Back to Home",
+      suggestion: "Try going back to the home page to optimize your PDFs.",
+    },
+    error: {
+      title: "Oops! Something went wrong",
+      subtitle: "An unexpected error occurred",
+      description:
+        "We're sorry, but something went wrong on our end. This might be a temporary issue.",
+      tryAgain: "Try Again",
+      backToHome: "Back to Home",
+      suggestion:
+        "You can try refreshing the page or go back to the home page.",
+    },
     privacy: {
       title: "Privacy Policy",
       subtitle:
@@ -107,6 +125,23 @@ export const locales = {
         "Optimize quantos PDFs precisar, completamente gratuito",
       privacyPolicy: "Política de Privacidade",
       poweredBy: "Powered by Ghostscript",
+    },
+    notFound: {
+      title: "404 - Página Não Encontrada",
+      subtitle: "A página que procura não existe",
+      description:
+        "A página solicitada não foi encontrada. Pode ter sido movida, eliminada, ou introduziu o URL incorreto.",
+      backToHome: "Voltar ao Início",
+      suggestion: "Tente voltar à página inicial para optimizar os seus PDFs.",
+    },
+    error: {
+      title: "Ops! Algo correu mal",
+      subtitle: "Ocorreu um erro inesperado",
+      description:
+        "Pedimos desculpa, mas algo correu mal do nosso lado. Isto pode ser um problema temporário.",
+      tryAgain: "Tentar Novamente",
+      backToHome: "Voltar ao Início",
+      suggestion: "Pode tentar actualizar a página ou voltar à página inicial.",
     },
     privacy: {
       title: "Política de Privacidade",

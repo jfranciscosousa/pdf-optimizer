@@ -45,6 +45,7 @@ export function usePdfOptimization(): UsePdfOptimizationReturn {
           psDataURL: window.URL.createObjectURL(file),
           level,
         });
+
         const { pdfURL, size } = await loadPDFData(
           response,
           `${file.name} optimized.pdf`,

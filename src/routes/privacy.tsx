@@ -20,8 +20,8 @@ function PrivacyPage() {
   const { t } = useLocale();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="min-h-screen">
+      <div className="relative z-10 container mx-auto px-4 py-8 max-w-4xl">
         <div className="mb-8">
           <Link to="/">
             <Button variant="ghost" className="mb-4">

@@ -2,6 +2,9 @@
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import * as React from "react";
+import { AnimatedBackground } from "~/components/animated-background";
+import { ErrorComponent } from "~/components/error-component";
+import { NotFoundComponent } from "~/components/not-found-component";
 import loadLanguage from "~/server/load-language";
 import appCss from "~/styles/app.css?url";
 
@@ -32,6 +35,8 @@ export const Route = createRootRoute({
   }),
   shellComponent: RootDocument,
   loader: async () => ({ language: await loadLanguage() }),
+  notFoundComponent: NotFoundComponent,
+  errorComponent: ErrorComponent,
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
@@ -41,6 +46,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <AnimatedBackground />
         {children}
         <TanStackRouterDevtools position="bottom-right" />
         <Scripts />
