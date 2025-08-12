@@ -32,6 +32,7 @@ export const locales = {
       feature3Title: "Unlimited Usage",
       feature3Description: "Optimize as many PDFs as you need, completely free",
       privacyPolicy: "Privacy Policy",
+      license: "License",
       poweredBy: "Powered by Ghostscript",
     },
     notFound: {
@@ -51,6 +52,19 @@ export const locales = {
       backToHome: "Back to Home",
       suggestion:
         "You can try refreshing the page or go back to the home page.",
+    },
+    license: {
+      title: "License",
+      subtitle: "This software is released under the MIT License",
+      backToHome: "Back to Home",
+      copyright: "Copyright 2025 José Francisco Ferreira Alves de Sousa",
+      mitTitle: "MIT License",
+      permission:
+        'Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:',
+      conditions:
+        "The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.",
+      disclaimer:
+        'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.',
     },
     privacy: {
       title: "Privacy Policy",
@@ -125,6 +139,7 @@ export const locales = {
       feature3Description:
         "Optimize quantos PDFs precisar, completamente gratuito",
       privacyPolicy: "Política de Privacidade",
+      license: "Licença",
       poweredBy: "Powered by Ghostscript",
     },
     notFound: {
@@ -143,6 +158,19 @@ export const locales = {
       tryAgain: "Tentar Novamente",
       backToHome: "Voltar ao Início",
       suggestion: "Pode tentar actualizar a página ou voltar à página inicial.",
+    },
+    license: {
+      title: "Licença",
+      subtitle: "Este software é disponibilizado sob a Licença MIT",
+      backToHome: "Voltar ao Início",
+      copyright: "Copyright 2025 José Francisco Ferreira Alves de Sousa",
+      mitTitle: "Licença MIT",
+      permission:
+        'É concedida permissão, gratuitamente, a qualquer pessoa que obtenha uma cópia deste software e ficheiros de documentação associados (o "Software"), para negociar no Software sem restrição, incluindo sem limitação os direitos de usar, copiar, modificar, fundir, publicar, distribuir, sublicenciar, e/ou vender cópias do Software, e permitir às pessoas a quem o Software é fornecido fazê-lo, sujeito às seguintes condições:',
+      conditions:
+        "O aviso de copyright acima e este aviso de permissão devem ser incluídos em todas as cópias ou partes substanciais do Software.",
+      disclaimer:
+        'O SOFTWARE É FORNECIDO "COMO ESTÁ", SEM GARANTIA DE QUALQUER TIPO, EXPRESSA OU IMPLÍCITA, INCLUINDO MAS NÃO LIMITADO ÀS GARANTIAS DE COMERCIALIZAÇÃO, ADEQUAÇÃO A UM PROPÓSITO PARTICULAR E NÃO VIOLAÇÃO. EM CASO ALGUM OS AUTORES OU DETENTORES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR QUALQUER RECLAMAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA NUMA ACÇÃO DE CONTRATO, DELITO OU OUTRA, DECORRENTE DE, FORA DE OU EM CONEXÃO COM O SOFTWARE OU O USO OU OUTRAS NEGOCIAÇÕES NO SOFTWARE.',
     },
     privacy: {
       title: "Política de Privacidade",

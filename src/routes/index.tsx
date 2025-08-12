@@ -347,6 +347,13 @@ function Home() {
             >
               {t.home.privacyPolicy}
             </Link>
+            <span className="text-gray-400">•</span>
+            <Link
+              to="/license"
+              className="hover:text-blue-600 transition-colors font-medium"
+            >
+              {t.home.license}
+            </Link>
           </div>
         </footer>
       </div>
