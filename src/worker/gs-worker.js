@@ -824,7 +824,7 @@ function createExportWrapper(name) {
 // include: runtime_exceptions.js
 // end include: runtime_exceptions.js
 var wasmBinaryFile;
-wasmBinaryFile = "/gs-worker.wasm";
+wasmBinaryFile = "https://ghostscript-wasm-cdn.pages.dev/gs-worker.wasm";
 // if (!isDataURI(wasmBinaryFile)) {
 //   wasmBinaryFile = locateFile(wasmBinaryFile);
 // }
