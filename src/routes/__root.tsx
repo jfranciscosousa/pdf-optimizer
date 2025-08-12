@@ -31,8 +31,25 @@ export const Route = createRootRoute({
         name: "generator",
         content: "TanStack Start",
       },
+      {
+        name: "theme-color",
+        content: "#2563eb",
+      },
+      {
+        name: "apple-mobile-web-app-capable",
+        content: "yes",
+      },
+      {
+        name: "apple-mobile-web-app-status-bar-style",
+        content: "default",
+      },
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/icon-192.svg" },
+      { rel: "manifest", href: "/site.webmanifest" },
+    ],
   }),
   shellComponent: RootDocument,
   loader: async () => ({ language: await loadLanguage() }),
