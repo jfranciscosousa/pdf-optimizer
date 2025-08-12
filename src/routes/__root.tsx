@@ -5,6 +5,7 @@ import * as React from "react";
 import { AnimatedBackground } from "~/components/animated-background";
 import { ErrorComponent } from "~/components/error-component";
 import { NotFoundComponent } from "~/components/not-found-component";
+import { UniversalFooter } from "~/components/universal-footer";
 import loadLanguage from "~/server/load-language";
 import appCss from "~/styles/app.css?url";
 
@@ -48,6 +49,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body>
         <AnimatedBackground />
         {children}
+        <UniversalFooter />
         <TanStackRouterDevtools position="bottom-right" />
         <Scripts />
       </body>

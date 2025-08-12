@@ -33,6 +33,9 @@ export const locales = {
       feature3Description: "Optimize as many PDFs as you need, completely free",
       privacyPolicy: "Privacy Policy",
       license: "License",
+      contact: "Contact",
+      github: "GitHub",
+      email: "Email",
       poweredBy: "Powered by Ghostscript",
     },
     notFound: {
@@ -105,7 +108,9 @@ export const locales = {
       ],
       contactTitle: "Questions?",
       contactContent:
-        "If you have any questions about this privacy policy or our practices, you can review our open-source code or contact us through our public repository.",
+        "If you have any questions about this privacy policy or our practices, you can review our open-source code or contact us:",
+      contactEmail: "Email us at",
+      contactGitHub: "View source code and report issues on GitHub",
     },
   },
   pt: {
@@ -140,6 +145,9 @@ export const locales = {
         "Optimize quantos PDFs precisar, completamente gratuito",
       privacyPolicy: "Política de Privacidade",
       license: "Licença",
+      contact: "Contacto",
+      github: "GitHub",
+      email: "Email",
       poweredBy: "Powered by Ghostscript",
     },
     notFound: {
@@ -211,7 +219,9 @@ export const locales = {
       ],
       contactTitle: "Questões?",
       contactContent:
-        "Se tiver questões sobre esta política de privacidade ou as nossas práticas, pode rever o nosso código open-source ou contactar-nos através do nosso repositório público.",
+        "Se tiver questões sobre esta política de privacidade ou as nossas práticas, pode rever o nosso código open-source ou contactar-nos:",
+      contactEmail: "Envie-nos um email",
+      contactGitHub: "Veja o código-fonte e reporte problemas no GitHub",
     },
   },
 } as const;

@@ -9,7 +9,9 @@ import {
   Eye,
   Lock,
   Hammer,
+  Mail,
 } from "lucide-react";
+import { GitHubIcon } from "~/components/icons/github";
 import { useLocale } from "~/hooks/use-locale";
 
 export const Route = createFileRoute("/privacy")({
@@ -138,14 +140,47 @@ function PrivacyPage() {
             </CardContent>
           </Card>
 
-          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm pt-4">
-            <CardHeader>
-              <CardTitle>{t.privacy.contactTitle}</CardTitle>
+          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm pt-0">
+            <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-t-lg py-4">
+              <CardTitle className="flex items-center gap-2">
+                <Mail className="h-5 w-5" />
+                {t.privacy.contactTitle}
+              </CardTitle>
             </CardHeader>
-            <CardContent className="px-8 py-0">
+            <CardContent className="px-8 py-6 space-y-6">
               <p className="text-gray-700 leading-relaxed">
                 {t.privacy.contactContent}
               </p>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                  <Mail className="h-5 w-5 text-blue-600 mt-1" />
+                  <div>
+                    <p className="text-gray-700">{t.privacy.contactEmail}</p>
+                    <a
+                      href="mailto:francisco.sousa@hey.com"
+                      className="text-blue-600 hover:text-blue-800 underline"
+                    >
+                      francisco.sousa@hey.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-4 bg-gray-50 border border-gray-200 rounded-lg">
+                  <GitHubIcon className="h-5 w-5 text-gray-600 mt-1" />
+                  <div>
+                    <p className="text-gray-700">{t.privacy.contactGitHub}</p>
+                    <a
+                      href="https://github.com/jfranciscosousa/pdf-optimizer"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-gray-800 underline"
+                    >
+                      github.com/jfranciscosousa/pdf-optimizer
+                    </a>
+                  </div>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>

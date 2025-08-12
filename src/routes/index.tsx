@@ -338,24 +338,6 @@ function Home() {
             </Card>
           </div>
         </div>
-
-        <footer className="mt-16 text-center space-y-4">
-          <div className="flex items-center justify-center gap-6 text-sm text-gray-600">
-            <Link
-              to="/privacy"
-              className="hover:text-blue-600 transition-colors font-medium"
-            >
-              {t.home.privacyPolicy}
-            </Link>
-            <span className="text-gray-400">•</span>
-            <Link
-              to="/license"
-              className="hover:text-blue-600 transition-colors font-medium"
-            >
-              {t.home.license}
-            </Link>
-          </div>
-        </footer>
       </div>
     </div>
   );
