@@ -165,22 +165,24 @@ function Home() {
                               {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
                             </p>
                           </div>
-                          <div className="flex gap-2">
-                            <div
-                              {...getRootProps()}
-                              className="text-sm text-blue-600 hover:text-blue-800 cursor-pointer underline"
-                            >
-                              <input {...getInputProps()} />
-                              Change
+                          {!isLoading && (
+                            <div className="flex gap-2">
+                              <div
+                                {...getRootProps()}
+                                className="text-sm text-blue-600 hover:text-blue-800 cursor-pointer underline"
+                              >
+                                <input {...getInputProps()} />
+                                Change
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => setSelectedFile(null)}
+                                className="text-sm text-red-600 hover:text-red-800"
+                              >
+                                Remove
+                              </button>
                             </div>
-                            <button
-                              type="button"
-                              onClick={() => setSelectedFile(null)}
-                              className="text-sm text-red-600 hover:text-red-800"
-                            >
-                              Remove
-                            </button>
-                          </div>
+                          )}
                         </div>
                       </div>
                     )}
