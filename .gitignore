@@ -6,6 +6,7 @@
 # production
 /build
 /dist
+.wrangler
 
 # debug
 npm-debug.log*
