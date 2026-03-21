@@ -8,80 +8,80 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from "./routes/__root";
-import { Route as PrivacyRouteImport } from "./routes/privacy";
-import { Route as LicenseRouteImport } from "./routes/license";
-import { Route as IndexRouteImport } from "./routes/index";
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as LicenseRouteImport } from './routes/license'
+import { Route as IndexRouteImport } from './routes/index'
 
 const PrivacyRoute = PrivacyRouteImport.update({
-  id: "/privacy",
-  path: "/privacy",
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const LicenseRoute = LicenseRouteImport.update({
-  id: "/license",
-  path: "/license",
+  id: '/license',
+  path: '/license',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const IndexRoute = IndexRouteImport.update({
-  id: "/",
-  path: "/",
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 
 export interface FileRoutesByFullPath {
-  "/": typeof IndexRoute;
-  "/license": typeof LicenseRoute;
-  "/privacy": typeof PrivacyRoute;
+  '/': typeof IndexRoute
+  '/license': typeof LicenseRoute
+  '/privacy': typeof PrivacyRoute
 }
 export interface FileRoutesByTo {
-  "/": typeof IndexRoute;
-  "/license": typeof LicenseRoute;
-  "/privacy": typeof PrivacyRoute;
+  '/': typeof IndexRoute
+  '/license': typeof LicenseRoute
+  '/privacy': typeof PrivacyRoute
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport;
-  "/": typeof IndexRoute;
-  "/license": typeof LicenseRoute;
-  "/privacy": typeof PrivacyRoute;
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/license': typeof LicenseRoute
+  '/privacy': typeof PrivacyRoute
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "/" | "/license" | "/privacy";
-  fileRoutesByTo: FileRoutesByTo;
-  to: "/" | "/license" | "/privacy";
-  id: "__root__" | "/" | "/license" | "/privacy";
-  fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/license' | '/privacy'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/license' | '/privacy'
+  id: '__root__' | '/' | '/license' | '/privacy'
+  fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute;
-  LicenseRoute: typeof LicenseRoute;
-  PrivacyRoute: typeof PrivacyRoute;
+  IndexRoute: typeof IndexRoute
+  LicenseRoute: typeof LicenseRoute
+  PrivacyRoute: typeof PrivacyRoute
 }
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/privacy": {
-      id: "/privacy";
-      path: "/privacy";
-      fullPath: "/privacy";
-      preLoaderRoute: typeof PrivacyRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/license": {
-      id: "/license";
-      path: "/license";
-      fullPath: "/license";
-      preLoaderRoute: typeof LicenseRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/": {
-      id: "/";
-      path: "/";
-      fullPath: "/";
-      preLoaderRoute: typeof IndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/license': {
+      id: '/license'
+      path: '/license'
+      fullPath: '/license'
+      preLoaderRoute: typeof LicenseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,16 +89,16 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LicenseRoute: LicenseRoute,
   PrivacyRoute: PrivacyRoute,
-};
+}
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
 
-import type { getRouter } from "./router.tsx";
-import type { createStart } from "@tanstack/react-start";
-declare module "@tanstack/react-start" {
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
   interface Register {
-    ssr: true;
-    router: Awaited<ReturnType<typeof getRouter>>;
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
   }
 }
