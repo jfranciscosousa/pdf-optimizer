@@ -1,6 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import type React from "react";
-import { useState } from "react";
+import { createFileRoute } from "@tanstack/react-router";
+import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Button } from "~/components/ui/button";
 import {
@@ -18,7 +17,7 @@ import {
   Loader2,
   Zap,
   Shield,
-  Infinity,
+  Infinity as InfinityIcon,
   Sparkles,
   Upload,
 } from "lucide-react";
@@ -75,16 +74,16 @@ function Home() {
     multiple: false,
   });
 
-  const handleOptimize = () => {
+  const handleOptimize = useCallback(() => {
     if (selectedFile) {
       optimizePdf(
         selectedFile,
         optimizationLevel as "light" | "medium" | "heavy",
       );
     }
-  };
+  }, [selectedFile, optimizePdf, optimizationLevel]);
 
-  const handleDownload = () => {
+  const handleDownload = useCallback(() => {
     if (optimizedFileUrl) {
       const link = document.createElement("a");
       link.href = optimizedFileUrl;
@@ -93,7 +92,9 @@ function Home() {
       link.click();
       document.body.removeChild(link);
     }
-  };
+  }, [optimizedFileUrl, selectedFile]);
+
+  const handleRemoveFile = useCallback(() => setSelectedFile(null), []);
 
   if (error) throw new Error(error);
 
@@ -176,7 +177,7 @@ function Home() {
                               </div>
                               <button
                                 type="button"
-                                onClick={() => setSelectedFile(null)}
+                                onClick={handleRemoveFile}
                                 className="text-sm text-red-600 hover:text-red-800"
                               >
                                 Remove
@@ -325,7 +326,7 @@ function Home() {
 
                 <div className="flex items-start gap-3">
                   <div className="bg-purple-100 p-2 rounded-lg">
-                    <Infinity className="h-6 w-6 text-purple-600" />
+                    <InfinityIcon className="h-6 w-6 text-purple-600" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">

@@ -11,7 +11,7 @@ interface UsePdfOptimizationReturn {
   error: string | null;
 }
 
-function loadPDFData(response: any, filename: string): Promise<any> {
+function loadPDFData(response: any): Promise<any> {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.open("GET", response);
@@ -22,6 +22,9 @@ function loadPDFData(response: any, filename: string): Promise<any> {
       const pdfURL = window.URL.createObjectURL(blob);
       const size = xhr.response.byteLength;
       resolve({ pdfURL, size });
+    };
+    xhr.onerror = function () {
+      reject();
     };
     xhr.send();
   });
@@ -44,11 +47,8 @@ export function usePdfOptimization(): UsePdfOptimizationReturn {
           level,
         });
 
-        const { pdfURL, size } = await loadPDFData(
-          response,
-          `${file.name} optimized.pdf`,
-        );
-        console.log(pdfURL, size);
+        const { pdfURL, size } = await loadPDFData(response);
+
         setData(pdfURL);
         setOptimizedSize(size);
       } catch (err) {

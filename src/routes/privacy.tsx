@@ -108,8 +108,8 @@ function PrivacyPage() {
                 {t.privacy.hostingContent}
               </p>
               <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
-                {t.privacy.hostingList.map((item: string, index: number) => (
-                  <li key={index}>{item}</li>
+                {t.privacy.hostingList.map((item: string) => (
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
@@ -133,8 +133,8 @@ function PrivacyPage() {
                 {t.privacy.technicalContent}
               </p>
               <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
-                {t.privacy.technicalList.map((item: string, index: number) => (
-                  <li key={index}>{item}</li>
+                {t.privacy.technicalList.map((item: string) => (
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
             </CardContent>
