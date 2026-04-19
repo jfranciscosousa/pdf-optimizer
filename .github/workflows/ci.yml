@@ -11,13 +11,16 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - uses: marocchino/tool-versions-action@v2
+        id: versions
+
       - uses: pnpm/action-setup@v6
         with:
-          version: 10.33.0
+          version: ${{ steps.versions.outputs.pnpm }}
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 24
+          node-version: ${{ steps.versions.outputs.nodejs }}
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
