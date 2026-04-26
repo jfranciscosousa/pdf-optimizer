@@ -19,7 +19,7 @@
     "@tailwindcss/vite": "^4.2.4",
     "@tanstack/react-router": "^1.168.24",
     "@tanstack/react-router-devtools": "^1.166.13",
-    "@tanstack/react-start": "^1.167.48",
+    "@tanstack/react-start": "^1.167.49",
     "accept-language": "^3.0.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
