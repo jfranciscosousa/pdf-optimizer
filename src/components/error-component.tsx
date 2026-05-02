@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { AlertTriangle, Home, RotateCcw } from "lucide-react";
-import { useCallback } from "react";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { useLocale } from "~/hooks/use-locale";
@@ -13,13 +12,13 @@ interface ErrorComponentProps {
 export function ErrorComponent({ error, reset }: ErrorComponentProps) {
   const { t } = useLocale();
 
-  const handleTryAgain = useCallback(() => {
+  const handleTryAgain = () => {
     if (reset) {
       reset();
     } else {
       window.location.reload();
     }
-  }, [reset]);
+  };
 
   return (
     <div className="min-h-screen">

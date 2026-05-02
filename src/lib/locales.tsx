@@ -8,30 +8,30 @@ export const locales = {
       title: "PDF Optimizer",
       subtitle:
         "Reduce PDF file sizes instantly with our advanced compression technology. Upload your PDF and choose your optimization level for the perfect balance of quality and file size.",
-      uploadTitle: "Upload & Optimize",
+      uploadTitle: "Upload & optimize",
       uploadDescription:
         "Choose your PDF file and optimization level to get started",
-      selectFile: "Select PDF File",
+      selectFile: "Select PDF file",
       selectedFile: "Selected file",
-      optimizationLevel: "Optimization Level",
-      lightName: "Light Compression",
+      optimizationLevel: "Optimization level",
+      lightName: "Light compression",
       lightDescription: "Minimal compression with maximum quality retention",
-      mediumName: "Medium Compression",
+      mediumName: "Medium compression",
       mediumDescription: "Balanced compression for most use cases",
-      heavyName: "Heavy Compression",
+      heavyName: "Heavy compression",
       heavyDescription: "Maximum compression for smallest file sizes",
       optimizePdf: "Optimize PDF",
       optimizing: "Optimizing...",
-      downloadOptimized: "Download Optimized PDF",
-      feature1Title: "Lightning Fast",
+      downloadOptimized: "Download optimized PDF",
+      feature1Title: "Lightning fast",
       feature1Description:
         "Process PDFs in seconds with our optimized algorithms",
-      feature2Title: "Secure & Private",
+      feature2Title: "Secure & private",
       feature2Description:
         "Your files are processed securely, offline and never leave your computer",
-      feature3Title: "Unlimited Usage",
+      feature3Title: "Unlimited usage",
       feature3Description: "Optimize as many PDFs as you need, completely free",
-      privacyPolicy: "Privacy Policy",
+      privacyPolicy: "Privacy policy",
       license: "License",
       contact: "Contact",
       github: "GitHub",
@@ -39,11 +39,11 @@ export const locales = {
       poweredBy: "Powered by Ghostscript",
     },
     notFound: {
-      title: "404 - Page Not Found",
+      title: "404 - Page not found",
       subtitle: "The page you're looking for doesn't exist",
       description:
         "The page you requested could not be found. It may have been moved, deleted, or you entered the wrong URL.",
-      backToHome: "Back to Home",
+      backToHome: "Back to home",
       suggestion: "Try going back to the home page to optimize your PDFs.",
     },
     error: {
@@ -51,15 +51,15 @@ export const locales = {
       subtitle: "An unexpected error occurred",
       description:
         "We're sorry, but something went wrong on our end. This might be a temporary issue.",
-      tryAgain: "Try Again",
-      backToHome: "Back to Home",
+      tryAgain: "Try again",
+      backToHome: "Back to home",
       suggestion:
         "You can try refreshing the page or go back to the home page.",
     },
     license: {
       title: "License",
       subtitle: "This software is released under the MIT License",
-      backToHome: "Back to Home",
+      backToHome: "Back to home",
       copyright: "Copyright 2025 José Francisco Ferreira Alves de Sousa",
       mitTitle: "MIT License",
       permission:
@@ -70,24 +70,24 @@ export const locales = {
         'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.',
     },
     privacy: {
-      title: "Privacy Policy",
+      title: "Privacy policy",
       subtitle:
         "Your privacy is our top priority. Here's exactly how we protect it.",
-      backToHome: "Back to Home",
+      backToHome: "Back to home",
       lastUpdated: "Last updated",
-      localProcessingTitle: "Local Processing",
+      localProcessingTitle: "Local processing",
       localProcessingContent:
         "All PDF optimization happens directly in your browser using WebAssembly technology. Your files are processed in memory and never transmitted to any server. When you close the page, all data is automatically discarded.",
-      noTrackingTitle: "No Tracking",
+      noTrackingTitle: "No tracking",
       noTrackingContent:
         "We don't use any analytics, cookies, tracking pixels, or third-party scripts. We have no way to identify you or track your behavior across sessions. Your usage is completely anonymous.",
-      noDataStorageTitle: "No Data Storage",
+      noDataStorageTitle: "No data storage",
       noDataStorageContent:
         "We don't store, cache, or retain any of your files or personal information. Everything happens in your browser's temporary memory and is automatically cleared when you navigate away or close the tab.",
-      openSourceTitle: "Open Source",
+      openSourceTitle: "Open source",
       openSourceContent:
         "Our code is transparent and auditable. You can inspect exactly how your files are processed and verify that no data leaves your device.",
-      hostingTitle: "Hosting Disclosure",
+      hostingTitle: "Hosting disclosure",
       hostingContent:
         "This website is hosted on Vercel's content delivery network. While we don't collect any data about you, Vercel may collect basic analytics such as:",
       hostingList: [
@@ -97,8 +97,8 @@ export const locales = {
         "Referrer information (which site you came from)",
       ],
       hostingNote:
-        "Important: No file content, personal data, or detailed usage information is ever transmitted to Vercel or any other service.",
-      technicalTitle: "Technical Implementation",
+        "Important: no file content, personal data, or detailed usage information is ever transmitted to Vercel or any other service.",
+      technicalTitle: "Technical implementation",
       technicalContent: "Our PDF optimizer uses:",
       technicalList: [
         "WebAssembly for high-performance local processing",
@@ -118,32 +118,32 @@ export const locales = {
       title: "Optimizador de PDF",
       subtitle:
         "Reduza o tamanho de ficheiros PDF instantaneamente com a nossa tecnologia de compressão avançada. Carregue o seu PDF e escolha o nível de optimização para o equilíbrio perfeito entre qualidade e tamanho do ficheiro.",
-      uploadTitle: "Carregar e Optimizar",
+      uploadTitle: "Carregar e optimizar",
       uploadDescription:
         "Escolha o seu ficheiro PDF e o nível de optimização para começar",
-      selectFile: "Seleccionar Ficheiro PDF",
+      selectFile: "Seleccionar ficheiro PDF",
       selectedFile: "Ficheiro seleccionado",
-      optimizationLevel: "Nível de Optimização",
-      lightName: "Compressão Leve",
+      optimizationLevel: "Nível de optimização",
+      lightName: "Compressão leve",
       lightDescription: "Compressão mínima com máxima retenção de qualidade",
-      mediumName: "Compressão Média",
+      mediumName: "Compressão média",
       mediumDescription:
         "Compressão equilibrada para a maioria dos casos de uso",
-      heavyName: "Compressão Pesada",
+      heavyName: "Compressão pesada",
       heavyDescription: "Compressão máxima para menores tamanhos de ficheiro",
       optimizePdf: "Optimizar PDF",
       optimizing: "A optimizar...",
-      downloadOptimized: "Descarregar PDF Optimizado",
-      feature1Title: "Extremamente Rápido",
+      downloadOptimized: "Descarregar PDF optimizado",
+      feature1Title: "Extremamente rápido",
       feature1Description:
         "Processe PDFs em segundos com os nossos algoritmos optimizados",
-      feature2Title: "Seguro e Privado",
+      feature2Title: "Seguro e privado",
       feature2Description:
         "Os seus ficheiros são processados com segurança, offline e nunca saem do seu computador",
-      feature3Title: "Utilização Ilimitada",
+      feature3Title: "Utilização ilimitada",
       feature3Description:
         "Optimize quantos PDFs precisar, completamente gratuito",
-      privacyPolicy: "Política de Privacidade",
+      privacyPolicy: "Política de privacidade",
       license: "Licença",
       contact: "Contacto",
       github: "GitHub",
@@ -151,11 +151,11 @@ export const locales = {
       poweredBy: "Powered by Ghostscript",
     },
     notFound: {
-      title: "404 - Página Não Encontrada",
+      title: "404 - Página não encontrada",
       subtitle: "A página que procura não existe",
       description:
         "A página solicitada não foi encontrada. Pode ter sido movida, eliminada, ou introduziu o URL incorreto.",
-      backToHome: "Voltar ao Início",
+      backToHome: "Voltar ao início",
       suggestion: "Tente voltar à página inicial para optimizar os seus PDFs.",
     },
     error: {
@@ -163,14 +163,14 @@ export const locales = {
       subtitle: "Ocorreu um erro inesperado",
       description:
         "Pedimos desculpa, mas algo correu mal do nosso lado. Isto pode ser um problema temporário.",
-      tryAgain: "Tentar Novamente",
-      backToHome: "Voltar ao Início",
+      tryAgain: "Tentar novamente",
+      backToHome: "Voltar ao início",
       suggestion: "Pode tentar actualizar a página ou voltar à página inicial.",
     },
     license: {
       title: "Licença",
       subtitle: "Este software é disponibilizado sob a Licença MIT",
-      backToHome: "Voltar ao Início",
+      backToHome: "Voltar ao início",
       copyright: "Copyright 2025 José Francisco Ferreira Alves de Sousa",
       mitTitle: "Licença MIT",
       permission:
@@ -181,24 +181,24 @@ export const locales = {
         'O SOFTWARE É FORNECIDO "COMO ESTÁ", SEM GARANTIA DE QUALQUER TIPO, EXPRESSA OU IMPLÍCITA, INCLUINDO MAS NÃO LIMITADO ÀS GARANTIAS DE COMERCIALIZAÇÃO, ADEQUAÇÃO A UM PROPÓSITO PARTICULAR E NÃO VIOLAÇÃO. EM CASO ALGUM OS AUTORES OU DETENTORES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR QUALQUER RECLAMAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA NUMA ACÇÃO DE CONTRATO, DELITO OU OUTRA, DECORRENTE DE, FORA DE OU EM CONEXÃO COM O SOFTWARE OU O USO OU OUTRAS NEGOCIAÇÕES NO SOFTWARE.',
     },
     privacy: {
-      title: "Política de Privacidade",
+      title: "Política de privacidade",
       subtitle:
         "A sua privacidade é a nossa prioridade máxima. Aqui está exactamente como a protegemos.",
-      backToHome: "Voltar ao Início",
+      backToHome: "Voltar ao início",
       lastUpdated: "Última actualização",
-      localProcessingTitle: "Processamento Local",
+      localProcessingTitle: "Processamento local",
       localProcessingContent:
         "Toda a optimização de PDF acontece directamente no seu navegador usando tecnologia WebAssembly. Os seus ficheiros são processados na memória e nunca transmitidos para qualquer servidor. Quando fecha a página, todos os dados são automaticamente descartados.",
-      noTrackingTitle: "Sem Rastreamento",
+      noTrackingTitle: "Sem rastreamento",
       noTrackingContent:
         "Não usamos análises, cookies, pixels de rastreamento ou scripts de terceiros. Não temos forma de o identificar ou rastrear o seu comportamento entre sessões. A sua utilização é completamente anónima.",
-      noDataStorageTitle: "Sem Armazenamento de Dados",
+      noDataStorageTitle: "Sem armazenamento de dados",
       noDataStorageContent:
         "Não armazenamos, guardamos em cache ou retemos nenhum dos seus ficheiros ou informações pessoais. Tudo acontece na memória temporária do seu navegador e é automaticamente limpo quando navega para outro lado ou fecha o separador.",
-      openSourceTitle: "Código Aberto",
+      openSourceTitle: "Código aberto",
       openSourceContent:
         "O nosso código é transparente e auditável. Pode inspecionar exatamente como os seus ficheiros são processados e verificar que nenhum dado sai do seu dispositivo.",
-      hostingTitle: "Divulgação de Hospedagem",
+      hostingTitle: "Divulgação de hospedagem",
       hostingContent:
         "Este sítio web está alojado na rede de distribuição de conteúdo da Vercel. Embora não recolhamos dados sobre si, a Vercel pode recolher análises básicas como:",
       hostingList: [
@@ -208,8 +208,8 @@ export const locales = {
         "Informações de referência (de que sítio veio)",
       ],
       hostingNote:
-        "Importante: Nenhum conteúdo de ficheiro, dados pessoais ou informações detalhadas de utilização são transmitidos para a Vercel ou qualquer outro serviço.",
-      technicalTitle: "Implementação Técnica",
+        "Importante: nenhum conteúdo de ficheiro, dados pessoais ou informações detalhadas de utilização são transmitidos para a Vercel ou qualquer outro serviço.",
+      technicalTitle: "Implementação técnica",
       technicalContent: "O nosso optimizador de PDF usa:",
       technicalList: [
         "WebAssembly para processamento local de alto desempenho",

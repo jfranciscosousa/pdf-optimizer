@@ -1,14 +1,24 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { optimizePdf as optimizePdfWorker } from "../worker/pdf-optimizer-worker";
+import pLimit from "p-limit";
 
 type OptimizationLevel = "light" | "medium" | "heavy";
 
-interface UsePdfOptimizationReturn {
-  isLoading: boolean;
-  data: string | null;
+interface FileOptimizationResult {
+  file: File;
+  originalSize: number;
+  optimizedUrl: string | null;
   optimizedSize: number | null;
-  optimizePdf: (file: File, level: OptimizationLevel) => void;
   error: string | null;
+}
+
+interface UsePdfOptimizationReturn {
+  fileResults: FileOptimizationResult[];
+  optimizeFiles: (files: File[], level: OptimizationLevel) => void;
+  downloadFile: (index: number) => void;
+  clearResult: (index: number) => void;
+  clearAllResults: () => void;
+  isLoading: boolean;
 }
 
 function loadPDFData(response: any): Promise<any> {
@@ -30,45 +40,83 @@ function loadPDFData(response: any): Promise<any> {
   });
 }
 
+async function optimizeFile(
+  file: File,
+  level: OptimizationLevel,
+): Promise<FileOptimizationResult> {
+  try {
+    const response = await optimizePdfWorker({
+      psDataURL: window.URL.createObjectURL(file),
+      level,
+    });
+
+    const { pdfURL, size } = await loadPDFData(response);
+
+    return {
+      file,
+      originalSize: file.size,
+      optimizedUrl: pdfURL,
+      optimizedSize: size,
+      error: null,
+    };
+  } catch (error: any) {
+    return {
+      file,
+      originalSize: file.size,
+      error: error.message ?? "Unknown error",
+      optimizedSize: null,
+      optimizedUrl: null,
+    };
+  }
+}
+
+const limit = pLimit(4);
+
 export function usePdfOptimization(): UsePdfOptimizationReturn {
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState<string | null>(null);
-  const [optimizedSize, setOptimizedSize] = useState<number | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [fileResults, setFileResults] = useState<FileOptimizationResult[]>([]);
 
-  const optimizePdf = useCallback(
-    async (file: File, level: OptimizationLevel) => {
-      setIsLoading(true);
-      setError(null);
+  async function optimizeFiles(files: File[], level: string) {
+    setIsLoading(true);
 
-      try {
-        const response = await optimizePdfWorker({
-          psDataURL: window.URL.createObjectURL(file),
-          level,
-        });
+    const tasks = files.map((file) =>
+      limit(() => optimizeFile(file, level as OptimizationLevel)),
+    );
+    const results = await Promise.all(tasks);
 
-        const { pdfURL, size } = await loadPDFData(response);
+    setFileResults(results);
+    setIsLoading(false);
+  }
 
-        setData(pdfURL);
-        setOptimizedSize(size);
-      } catch (err) {
-        setError(
-          err instanceof Error
-            ? err.message
-            : "An error occurred during optimization",
-        );
-      } finally {
-        setIsLoading(false);
+  function downloadFile(index: number) {
+    setFileResults((prev) => {
+      const result = prev[index];
+      if (result?.optimizedUrl) {
+        const link = document.createElement("a");
+        link.href = result.optimizedUrl;
+        link.download = `optimized_${result.file.name}`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       }
-    },
-    [],
-  );
+      return prev;
+    });
+  }
+
+  function clearResult(index: number) {
+    setFileResults((prev) => prev.filter((_, i) => i !== index));
+  }
+
+  function clearAllResults() {
+    setFileResults([]);
+  }
 
   return {
+    fileResults,
+    optimizeFiles,
+    downloadFile,
+    clearResult,
+    clearAllResults,
     isLoading,
-    data,
-    optimizedSize,
-    optimizePdf,
-    error,
   };
 }

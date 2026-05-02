@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Button } from "~/components/ui/button";
 import {
@@ -20,6 +20,7 @@ import {
   Infinity as InfinityIcon,
   Sparkles,
   Upload,
+  X,
 } from "lucide-react";
 import { usePdfOptimization } from "~/hooks/use-pdf-optimization";
 import { useLocale } from "~/hooks/use-locale";
@@ -29,16 +30,17 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [optimizationLevel, setOptimizationLevel] = useState("medium");
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [selectedLevel, setSelectedLevel] = useState("medium");
 
   const { t } = useLocale();
   const {
+    fileResults,
+    optimizeFiles,
+    downloadFile,
+    clearResult,
+    clearAllResults,
     isLoading,
-    error,
-    data: optimizedFileUrl,
-    optimizedSize,
-    optimizePdf,
   } = usePdfOptimization();
 
   const optimizationLevels = [
@@ -60,10 +62,17 @@ function Home() {
   ];
 
   const onDrop = (acceptedFiles: File[]) => {
-    const file = acceptedFiles[0];
-    if (file && file.type === "application/pdf") {
-      setSelectedFile(file);
+    const pdfFiles = acceptedFiles.filter(
+      (file) => file.type === "application/pdf",
+    );
+    if (pdfFiles.length > 0) {
+      setSelectedFiles((prev) => [...prev, ...pdfFiles]);
     }
+  };
+
+  const clearAll = () => {
+    setSelectedFiles([]);
+    clearAllResults();
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -71,32 +80,8 @@ function Home() {
     accept: {
       "application/pdf": [".pdf"],
     },
-    multiple: false,
+    multiple: true,
   });
-
-  const handleOptimize = useCallback(() => {
-    if (selectedFile) {
-      optimizePdf(
-        selectedFile,
-        optimizationLevel as "light" | "medium" | "heavy",
-      );
-    }
-  }, [selectedFile, optimizePdf, optimizationLevel]);
-
-  const handleDownload = useCallback(() => {
-    if (optimizedFileUrl) {
-      const link = document.createElement("a");
-      link.href = optimizedFileUrl;
-      link.download = `optimized_${selectedFile?.name || "document.pdf"}`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  }, [optimizedFileUrl, selectedFile]);
-
-  const handleRemoveFile = useCallback(() => setSelectedFile(null), []);
-
-  if (error) throw new Error(error);
 
   return (
     <div className="min-h-screen">
@@ -133,77 +118,75 @@ function Home() {
                   <Label className="text-lg font-semibold text-gray-700">
                     {t.home.selectFile}
                   </Label>
-                  <div className="relative">
-                    {!selectedFile ? (
-                      <div
-                        {...getRootProps()}
-                        className={`flex h-32 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed text-lg transition-all ${
-                          isDragActive
-                            ? "border-blue-500 bg-blue-50 text-blue-700"
-                            : "border-gray-300 bg-gray-50 text-gray-500 hover:border-blue-400 hover:bg-blue-50"
-                        }`}
-                      >
-                        <input {...getInputProps()} />
-                        <Upload className="mb-2 size-8" />
-                        <p className="text-center">
-                          {isDragActive
-                            ? "Drop your PDF here..."
-                            : "Drop your PDF here or click to browse"}
-                        </p>
-                        <p className="mt-1 text-sm opacity-75">
-                          Supports PDF files only
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="rounded-lg border border-green-200 bg-green-50 p-4">
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <p className="font-medium text-green-800">
-                              {selectedFile.name}
-                            </p>
-                            <p className="text-sm text-green-600">
-                              Size:{" "}
-                              {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
-                            </p>
-                          </div>
-                          {!isLoading && (
-                            <div className="flex gap-2">
-                              <div
-                                {...getRootProps()}
-                                className="cursor-pointer text-sm text-blue-600 underline hover:text-blue-800"
-                              >
-                                <input {...getInputProps()} />
-                                Change
-                              </div>
-                              <button
-                                type="button"
-                                onClick={handleRemoveFile}
-                                className="text-sm text-red-600 hover:text-red-800"
-                              >
-                                Remove
-                              </button>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    )}
+                  <div
+                    {...getRootProps()}
+                    className={`flex h-32 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed text-lg transition-all ${
+                      isDragActive
+                        ? "border-blue-500 bg-blue-50 text-blue-700"
+                        : "border-gray-300 bg-gray-50 text-gray-500 hover:border-blue-400 hover:bg-blue-50"
+                    }`}
+                  >
+                    <input {...getInputProps()} />
+                    <Upload className="mb-2 size-8" />
+                    <p className="text-center">
+                      {isDragActive
+                        ? "Drop your PDFs here..."
+                        : "Drop your PDFs here or click to browse"}
+                    </p>
+                    <p className="mt-1 text-sm opacity-75">
+                      Supports multiple PDF files
+                    </p>
                   </div>
                 </div>
+
+                {selectedFiles.length > 0 && (
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <Label className="text-lg font-semibold text-gray-700">
+                        Selected files ({selectedFiles.length})
+                      </Label>
+                      <button
+                        type="button"
+                        onClick={clearAll}
+                        className="text-sm text-red-600 hover:text-red-800"
+                      >
+                        Clear all
+                      </button>
+                    </div>
+                    <div className="space-y-2">
+                      {selectedFiles.map((file, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center justify-between rounded-lg border border-blue-200 bg-blue-50 p-3"
+                        >
+                          <div>
+                            <p className="font-medium text-blue-800">
+                              {file.name}
+                            </p>
+                            <p className="text-sm text-blue-600">
+                              Size: {(file.size / 1024 / 1024).toFixed(2)} MB
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 <div className="space-y-6">
                   <Label className="text-lg font-semibold text-gray-700">
                     {t.home.optimizationLevel}
                   </Label>
                   <RadioGroup
-                    value={optimizationLevel}
-                    onValueChange={setOptimizationLevel}
+                    value={selectedLevel}
+                    onValueChange={setSelectedLevel}
                   >
                     {optimizationLevels.map((level, index) => (
                       <div key={level.id} className="space-y-3">
                         <label
                           htmlFor={level.id}
                           className={`block cursor-pointer rounded-lg border-2 p-4 transition-all ${
-                            optimizationLevel === level.id
+                            selectedLevel === level.id
                               ? "border-blue-500 bg-blue-50"
                               : "border-gray-200 hover:border-gray-300"
                           }`}
@@ -240,8 +223,8 @@ function Home() {
 
                 <div className="space-y-4">
                   <Button
-                    onClick={handleOptimize}
-                    disabled={!selectedFile || isLoading}
+                    onClick={() => optimizeFiles(selectedFiles, selectedLevel)}
+                    disabled={selectedFiles.length === 0 || isLoading}
                     className="h-14 w-full bg-linear-to-r from-blue-600 to-purple-600 text-lg shadow-lg transition-all hover:from-blue-700 hover:to-purple-700 hover:shadow-xl"
                   >
                     {isLoading ? (
@@ -252,43 +235,112 @@ function Home() {
                     ) : (
                       <>
                         <Zap className="mr-3 size-5" />
-                        {t.home.optimizePdf}
+                        Optimize{" "}
+                        {selectedFiles.length > 0
+                          ? `(${selectedFiles.length} files)`
+                          : "Selected files"}
                       </>
                     )}
                   </Button>
 
-                  {optimizedFileUrl && (
-                    <div className="space-y-3">
-                      {optimizedSize && (
-                        <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
-                          <p className="font-medium text-blue-800">
-                            Optimized size:{" "}
-                            {(optimizedSize / 1024 / 1024).toFixed(2)} MB
-                          </p>
-                          {selectedFile && (
-                            <p className="text-sm text-blue-600">
-                              Reduction:{" "}
-                              {(
-                                ((selectedFile.size - optimizedSize) /
-                                  selectedFile.size) *
-                                100
-                              ).toFixed(1)}
-                              %
-                            </p>
-                          )}
-                        </div>
-                      )}
-                      <Button
-                        onClick={handleDownload}
-                        variant="outline"
-                        className="h-14 w-full border-2 border-green-500 bg-transparent text-lg text-green-700 shadow-lg transition-all hover:bg-green-50 hover:shadow-xl"
-                      >
-                        <Download className="mr-3 size-5" />
-                        {t.home.downloadOptimized}
-                      </Button>
-                    </div>
+                  {fileResults.length > 0 && (
+                    <Button
+                      onClick={clearAllResults}
+                      disabled={isLoading}
+                      variant="outline"
+                      className="h-14 w-full border-2 border-red-500 bg-transparent text-lg text-red-700 shadow-lg transition-all hover:bg-red-50"
+                    >
+                      <X className="mr-3 size-5" />
+                      Clear all results
+                    </Button>
                   )}
                 </div>
+
+                {fileResults.length > 0 && (
+                  <div className="space-y-4">
+                    <Label className="text-lg font-semibold text-gray-700">
+                      Optimization results ({fileResults.length})
+                    </Label>
+                    <div className="space-y-3">
+                      {fileResults.map((result, idx) => (
+                        <div
+                          key={idx}
+                          className={`rounded-lg border p-4 ${
+                            result.error
+                              ? "border-red-200 bg-red-50"
+                              : "border-green-200 bg-green-50"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex-1">
+                              <p
+                                className={`font-medium ${
+                                  result.error
+                                    ? "text-red-800"
+                                    : result.optimizedUrl
+                                      ? "text-green-800"
+                                      : "text-gray-800"
+                                }`}
+                              >
+                                {result.file.name}
+                              </p>
+                              <p className="text-sm text-gray-600">
+                                Original:{" "}
+                                {(result.originalSize / 1024 / 1024).toFixed(2)}{" "}
+                                MB
+                                {result.optimizedSize && (
+                                  <>
+                                    {" → "}
+                                    <span className="text-green-600">
+                                      {(
+                                        result.optimizedSize /
+                                        1024 /
+                                        1024
+                                      ).toFixed(2)}{" "}
+                                      MB
+                                    </span>
+                                    {" ("}
+                                    {(
+                                      ((result.originalSize -
+                                        result.optimizedSize) /
+                                        result.originalSize) *
+                                      100
+                                    ).toFixed(1)}
+                                    % reduction)
+                                  </>
+                                )}
+                              </p>
+                              {result.error && (
+                                <p className="mt-1 text-sm text-red-600">
+                                  Error: {result.error}
+                                </p>
+                              )}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              {result.optimizedUrl && (
+                                <Button
+                                  onClick={() => downloadFile(idx)}
+                                  size="sm"
+                                  className="bg-green-600 text-white hover:bg-green-700"
+                                >
+                                  <Download className="mr-2 size-4" />
+                                  Download
+                                </Button>
+                              )}
+                              <button
+                                type="button"
+                                onClick={() => clearResult(idx)}
+                                className="text-sm text-red-600 hover:text-red-800"
+                              >
+                                <X className="size-4" />
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>

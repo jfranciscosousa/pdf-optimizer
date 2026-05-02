@@ -85,6 +85,7 @@ pnpm build
 - Tailwind CSS for styling
 - TypeScript strict mode
 - ESM modules throughout
+- All user-facing copy uses Sentence case only (capitalize the first word and proper nouns; do not Title Case headings, buttons, labels, or any other UI text). The sole exception is the main app title ("PDF Optimizer"), which stays Title Case as a brand/product name
 
 ## Important Notes
 
