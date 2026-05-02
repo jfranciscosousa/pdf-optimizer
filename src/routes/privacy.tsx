@@ -23,26 +23,26 @@ function PrivacyPage() {
 
   return (
     <div className="min-h-screen">
-      <div className="relative z-10 container mx-auto px-4 py-8 max-w-4xl">
+      <div className="relative z-10 container mx-auto max-w-4xl px-4 py-8">
         <div className="mb-8">
           <Link to="/">
             <Button variant="ghost" className="mb-4">
-              <ArrowLeft className="mr-2 h-4 w-4" />
+              <ArrowLeft className="mr-2 size-4" />
               {t.privacy.backToHome}
             </Button>
           </Link>
 
           <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Shield className="h-10 w-10 text-blue-600" />
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <div className="mb-4 flex items-center justify-center gap-3">
+              <Shield className="size-10 text-blue-600" />
+              <h1 className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-4xl font-bold text-transparent">
                 {t.privacy.title}
               </h1>
             </div>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-lg text-gray-600">
               {t.privacy.subtitle}
             </p>
-            <p className="text-sm text-gray-500 mt-2">
+            <p className="mt-2 text-sm text-gray-500">
               {t.privacy.lastUpdated}: August 2025
             </p>
           </div>
@@ -51,69 +51,69 @@ function PrivacyPage() {
         {/* Privacy Sections */}
         <div className="space-y-6">
           {/* Local Processing */}
-          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm pt-0">
-            <CardHeader className="bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-t-lg py-4">
+          <Card className="border-0 bg-white/80 pt-0 shadow-lg backdrop-blur-sm">
+            <CardHeader className="rounded-t-lg bg-linear-to-r from-green-500 to-emerald-600 py-4 text-white">
               <CardTitle className="flex items-center gap-2">
-                <Lock className="h-5 w-5" />
+                <Lock className="size-5" />
                 {t.privacy.localProcessingTitle}
               </CardTitle>
             </CardHeader>
             <CardContent className="px-8 py-0">
-              <p className="text-gray-700 leading-relaxed">
+              <p className="leading-relaxed text-gray-700">
                 {t.privacy.localProcessingContent}
               </p>
             </CardContent>
           </Card>
 
           {/* No Tracking */}
-          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm pt-0">
-            <CardHeader className="bg-gradient-to-r from-blue-500 to-cyan-600 text-white rounded-t-lg py-4">
+          <Card className="border-0 bg-white/80 pt-0 shadow-lg backdrop-blur-sm">
+            <CardHeader className="rounded-t-lg bg-linear-to-r from-blue-500 to-cyan-600 py-4 text-white">
               <CardTitle className="flex items-center gap-2">
-                <Eye className="h-5 w-5" />
+                <Eye className="size-5" />
                 {t.privacy.noTrackingTitle}
               </CardTitle>
             </CardHeader>
             <CardContent className="px-8 py-0">
-              <p className="text-gray-700 leading-relaxed">
+              <p className="leading-relaxed text-gray-700">
                 {t.privacy.noTrackingContent}
               </p>
             </CardContent>
           </Card>
 
           {/* No Data Storage */}
-          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm pt-0">
-            <CardHeader className="bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-t-lg py-4">
+          <Card className="border-0 bg-white/80 pt-0 shadow-lg backdrop-blur-sm">
+            <CardHeader className="rounded-t-lg bg-linear-to-r from-purple-500 to-pink-600 py-4 text-white">
               <CardTitle className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5" />
+                <CheckCircle className="size-5" />
                 {t.privacy.noDataStorageTitle}
               </CardTitle>
             </CardHeader>
             <CardContent className="px-8 py-0">
-              <p className="text-gray-700 leading-relaxed">
+              <p className="leading-relaxed text-gray-700">
                 {t.privacy.noDataStorageContent}
               </p>
             </CardContent>
           </Card>
 
           {/* Hosting Disclosure */}
-          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm pt-0">
-            <CardHeader className="bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-t-lg py-4">
+          <Card className="border-0 bg-white/80 pt-0 shadow-lg backdrop-blur-sm">
+            <CardHeader className="rounded-t-lg bg-linear-to-r from-orange-500 to-red-600 py-4 text-white">
               <CardTitle className="flex items-center gap-2">
-                <Server className="h-5 w-5" />
+                <Server className="size-5" />
                 {t.privacy.hostingTitle}
               </CardTitle>
             </CardHeader>
-            <CardContent className="px-8 py-0 space-y-4">
-              <p className="text-gray-700 leading-relaxed">
+            <CardContent className="space-y-4 px-8 py-0">
+              <p className="leading-relaxed text-gray-700">
                 {t.privacy.hostingContent}
               </p>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
-                {t.privacy.hostingList.map((item: string) => (
-                  <li key={item}>{item}</li>
+              <ul className="ml-4 list-inside list-disc space-y-2 text-gray-700">
+                {t.privacy.hostingList.map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
                 ))}
               </ul>
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                <p className="text-yellow-800 font-medium">
+              <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-4">
+                <p className="font-medium text-yellow-800">
                   {t.privacy.hostingNote}
                 </p>
               </div>
@@ -121,60 +121,60 @@ function PrivacyPage() {
           </Card>
 
           {/* Technical Implementation */}
-          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm pt-0">
-            <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-t-lg py-4">
+          <Card className="border-0 bg-white/80 pt-0 shadow-lg backdrop-blur-sm">
+            <CardHeader className="rounded-t-lg bg-linear-to-r from-indigo-500 to-purple-600 py-4 text-white">
               <CardTitle className="flex items-center gap-2">
-                <Hammer className="h-5 w-5" />
+                <Hammer className="size-5" />
                 {t.privacy.technicalTitle}
               </CardTitle>
             </CardHeader>
-            <CardContent className="px-8 py-0 space-y-4">
-              <p className="text-gray-700 leading-relaxed">
+            <CardContent className="space-y-4 px-8 py-0">
+              <p className="leading-relaxed text-gray-700">
                 {t.privacy.technicalContent}
               </p>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
-                {t.privacy.technicalList.map((item: string) => (
-                  <li key={item}>{item}</li>
+              <ul className="ml-4 list-inside list-disc space-y-2 text-gray-700">
+                {t.privacy.technicalList.map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
                 ))}
               </ul>
             </CardContent>
           </Card>
 
-          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm pt-0">
-            <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-t-lg py-4">
+          <Card className="border-0 bg-white/80 pt-0 shadow-lg backdrop-blur-sm">
+            <CardHeader className="rounded-t-lg bg-linear-to-r from-blue-500 to-purple-600 py-4 text-white">
               <CardTitle className="flex items-center gap-2">
-                <Mail className="h-5 w-5" />
+                <Mail className="size-5" />
                 {t.privacy.contactTitle}
               </CardTitle>
             </CardHeader>
-            <CardContent className="px-8 py-6 space-y-6">
-              <p className="text-gray-700 leading-relaxed">
+            <CardContent className="space-y-6 px-8 py-6">
+              <p className="leading-relaxed text-gray-700">
                 {t.privacy.contactContent}
               </p>
 
               <div className="space-y-4">
-                <div className="flex items-start gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                  <Mail className="h-5 w-5 text-blue-600 mt-1" />
+                <div className="flex items-start gap-3 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                  <Mail className="mt-1 size-5 text-blue-600" />
                   <div>
                     <p className="text-gray-700">{t.privacy.contactEmail}</p>
                     <a
                       href="mailto:francisco.sousa@hey.com"
-                      className="text-blue-600 hover:text-blue-800 underline"
+                      className="text-blue-600 underline hover:text-blue-800"
                     >
                       francisco.sousa@hey.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 p-4 bg-gray-50 border border-gray-200 rounded-lg">
-                  <GitHubIcon className="h-5 w-5 text-gray-600 mt-1" />
+                <div className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4">
+                  <GitHubIcon className="mt-1 size-5 text-gray-600" />
                   <div>
                     <p className="text-gray-700">{t.privacy.contactGitHub}</p>
                     <a
                       href="https://github.com/jfranciscosousa/pdf-optimizer"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-gray-800 underline"
+                      className="text-gray-600 underline hover:text-gray-800"
                     >
                       github.com/jfranciscosousa/pdf-optimizer
                     </a>

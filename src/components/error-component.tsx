@@ -23,29 +23,29 @@ export function ErrorComponent({ error, reset }: ErrorComponentProps) {
 
   return (
     <div className="min-h-screen">
-      <div className="relative z-10 container mx-auto px-4 py-8 max-w-4xl">
-        <div className="flex items-center justify-center min-h-screen">
-          <Card className="shadow-2xl border-0 bg-white/80 backdrop-blur-sm w-full max-w-2xl">
-            <CardHeader className="text-center py-8">
-              <div className="flex justify-center mb-4">
+      <div className="relative z-10 container mx-auto max-w-4xl px-4 py-8">
+        <div className="flex min-h-screen items-center justify-center">
+          <Card className="w-full max-w-2xl border-0 bg-white/80 shadow-2xl backdrop-blur-sm">
+            <CardHeader className="py-8 text-center">
+              <div className="mb-4 flex justify-center">
                 <div className="relative">
-                  <AlertTriangle className="h-24 w-24 text-orange-400" />
-                  <div className="absolute -top-2 -right-2 bg-red-100 rounded-full p-2">
-                    <AlertTriangle className="h-6 w-6 text-red-600" />
+                  <AlertTriangle className="size-24 text-orange-400" />
+                  <div className="absolute -top-2 -right-2 rounded-full bg-red-100 p-2">
+                    <AlertTriangle className="size-6 text-red-600" />
                   </div>
                 </div>
               </div>
-              <CardTitle className="text-4xl font-bold text-gray-800 mb-2">
+              <CardTitle className="mb-2 text-4xl font-bold text-gray-800">
                 {t.error.title}
               </CardTitle>
-              <p className="text-gray-600 text-lg">{t.error.subtitle}</p>
+              <p className="text-lg text-gray-600">{t.error.subtitle}</p>
             </CardHeader>
-            <CardContent className="text-center space-y-6 pb-8">
+            <CardContent className="space-y-6 pb-8 text-center">
               <p className="text-gray-500">{t.error.description}</p>
 
               {error && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                  <p className="text-red-800 text-sm font-mono">
+                <div className="rounded-lg border border-red-200 bg-red-50 p-4">
+                  <p className="font-mono text-sm text-red-800">
                     {error.message}
                   </p>
                 </div>
@@ -54,19 +54,19 @@ export function ErrorComponent({ error, reset }: ErrorComponentProps) {
               <div className="space-y-4">
                 <Button
                   onClick={handleTryAgain}
-                  className="w-full h-12 text-lg bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 shadow-lg hover:shadow-xl transition-all"
+                  className="h-12 w-full bg-linear-to-r from-orange-500 to-red-600 text-lg shadow-lg transition-all hover:from-orange-600 hover:to-red-700 hover:shadow-xl"
                 >
-                  <RotateCcw className="mr-2 h-5 w-5" />
+                  <RotateCcw className="mr-2 size-5" />
                   {t.error.tryAgain}
                 </Button>
 
                 <Button
                   asChild
                   variant="outline"
-                  className="w-full h-12 text-lg border-2 border-blue-500 text-blue-700 hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all bg-transparent"
+                  className="h-12 w-full border-2 border-blue-500 bg-transparent text-lg text-blue-700 shadow-lg transition-all hover:bg-blue-50 hover:shadow-xl"
                 >
                   <Link to="/">
-                    <Home className="mr-2 h-5 w-5" />
+                    <Home className="mr-2 size-5" />
                     {t.error.backToHome}
                   </Link>
                 </Button>

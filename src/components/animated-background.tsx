@@ -29,10 +29,10 @@ const blobStyles = {
 export function AnimatedBackground() {
   return (
     <>
-      <div className="fixed inset-0 overflow-hidden pointer-events-none bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute top-40 left-40 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+      <div className="pointer-events-none fixed inset-0 overflow-hidden bg-linear-to-br from-blue-50 via-white to-purple-50">
+        <div className="animate-blob absolute -top-40 -right-40 size-80 rounded-full bg-purple-200 opacity-70 mix-blend-multiply blur-xl filter"></div>
+        <div className="animate-blob animation-delay-2000 absolute -bottom-40 -left-40 size-80 rounded-full bg-blue-200 opacity-70 mix-blend-multiply blur-xl filter"></div>
+        <div className="animate-blob animation-delay-4000 absolute top-40 left-40 size-80 rounded-full bg-pink-200 opacity-70 mix-blend-multiply blur-xl filter"></div>
       </div>
 
       <style dangerouslySetInnerHTML={blobStyles} />

@@ -13,56 +13,56 @@ function LicensePage() {
 
   return (
     <div className="min-h-screen">
-      <div className="relative z-10 container mx-auto px-4 py-8 max-w-4xl">
+      <div className="relative z-10 container mx-auto max-w-4xl px-4 py-8">
         <div className="mb-8">
           <Link to="/">
             <Button variant="ghost" className="mb-4">
-              <ArrowLeft className="mr-2 h-4 w-4" />
+              <ArrowLeft className="mr-2 size-4" />
               {t.license.backToHome}
             </Button>
           </Link>
 
           <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Scale className="h-10 w-10 text-blue-600" />
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <div className="mb-4 flex items-center justify-center gap-3">
+              <Scale className="size-10 text-blue-600" />
+              <h1 className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-4xl font-bold text-transparent">
                 {t.license.title}
               </h1>
             </div>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-lg text-gray-600">
               {t.license.subtitle}
             </p>
           </div>
         </div>
 
         <div className="space-y-6">
-          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm">
+          <Card className="border-0 bg-white/80 shadow-lg backdrop-blur-sm">
             <CardContent className="p-8">
               <div className="text-center">
-                <FileText className="h-12 w-12 text-gray-600 mx-auto mb-4" />
-                <p className="text-gray-800 font-medium text-lg">
+                <FileText className="mx-auto mb-4 size-12 text-gray-600" />
+                <p className="text-lg font-medium text-gray-800">
                   {t.license.copyright}
                 </p>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm pt-0">
-            <CardHeader className="bg-gradient-to-r from-green-500 to-blue-600 text-white rounded-t-lg py-6">
-              <CardTitle className="text-2xl text-center">
+          <Card className="border-0 bg-white/80 pt-0 shadow-lg backdrop-blur-sm">
+            <CardHeader className="rounded-t-lg bg-linear-to-r from-green-500 to-blue-600 py-6 text-white">
+              <CardTitle className="text-center text-2xl">
                 {t.license.mitTitle}
               </CardTitle>
             </CardHeader>
-            <CardContent className="p-8 space-y-6">
+            <CardContent className="space-y-6 p-8">
               <div className="space-y-4">
                 <div>
-                  <p className="text-gray-700 leading-relaxed text-justify">
+                  <p className="text-justify leading-relaxed text-gray-700">
                     {t.license.permission}
                   </p>
                 </div>
 
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <p className="text-blue-800 text-sm font-medium">
+                <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
+                  <p className="text-sm font-medium text-blue-800">
                     {t.license.conditions}
                   </p>
                 </div>
@@ -70,10 +70,10 @@ function LicensePage() {
             </CardContent>
           </Card>
 
-          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm">
+          <Card className="border-0 bg-white/80 shadow-lg backdrop-blur-sm">
             <CardContent className="p-8">
-              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-                <p className="text-gray-700 text-sm leading-relaxed font-mono text-justify">
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">
+                <p className="text-justify font-mono text-sm leading-relaxed text-gray-700">
                   {t.license.disclaimer}
                 </p>
               </div>
