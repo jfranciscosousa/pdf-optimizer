@@ -22,16 +22,20 @@ import {
   Upload,
   X,
 } from "lucide-react";
-import { usePdfOptimization } from "~/hooks/use-pdf-optimization";
+import {
+  usePdfOptimization,
+  type OptimizationLevel,
+} from "~/hooks/use-pdf-optimization";
 import { useLocale } from "~/hooks/use-locale";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/")(
+  {
   component: Home,
 });
 
 function Home() {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-  const [selectedLevel, setSelectedLevel] = useState("medium");
+  const [selectedLevel, setSelectedLevel] = useState<OptimizationLevel>("medium");
 
   const { t } = useLocale();
   const {

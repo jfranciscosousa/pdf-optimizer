@@ -2,7 +2,7 @@ import { useState } from "react";
 import { optimizePdf as optimizePdfWorker } from "../worker/pdf-optimizer-worker";
 import pLimit from "p-limit";
 
-type OptimizationLevel = "light" | "medium" | "heavy";
+export type OptimizationLevel = "light" | "medium" | "heavy";
 
 interface FileOptimizationResult {
   file: File;
