@@ -28,8 +28,7 @@ import {
 } from "~/hooks/use-pdf-optimization";
 import { useLocale } from "~/hooks/use-locale";
 
-export const Route = createFileRoute("/")(
-  {
+export const Route = createFileRoute("/")({
   component: Home,
 });
 
@@ -183,7 +182,7 @@ function Home() {
                   </Label>
                   <RadioGroup
                     value={selectedLevel}
-                    onValueChange={setSelectedLevel}
+                    onValueChange={(v) => setSelectedLevel(v as OptimizationLevel)}
                   >
                     {optimizationLevels.map((level, index) => (
                       <div key={level.id} className="space-y-3">
