@@ -7,3 +7,8 @@ onlyBuiltDependencies:
   - esbuild
   - sharp
   - workerd
+
+autoInstallPeers: false
+publicHoistPattern:
+  - "@tanstack/react-start-server"
+minimumReleaseAge: 7200
