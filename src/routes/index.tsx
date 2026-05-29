@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { usePdfOptimization } from "~/hooks/use-pdf-optimization";
 import { useLocale } from "~/hooks/use-locale";
+import { OptimizationLevel } from "~/worker/types";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -223,7 +224,12 @@ function Home() {
 
                 <div className="space-y-4">
                   <Button
-                    onClick={() => optimizeFiles(selectedFiles, selectedLevel)}
+                    onClick={() =>
+                      optimizeFiles(
+                        selectedFiles,
+                        selectedLevel as OptimizationLevel,
+                      )
+                    }
                     disabled={selectedFiles.length === 0 || isLoading}
                     className="h-14 w-full bg-linear-to-r from-blue-600 to-purple-600 text-lg shadow-lg transition-all hover:from-blue-700 hover:to-purple-700 hover:shadow-xl"
                   >
