@@ -20,12 +20,12 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "PDF Optimizer - Reduce PDF file sizes instantly",
+        title: "PDF Optimizer - Optimize, merge & split PDFs instantly",
       },
       {
         name: "description",
         content:
-          "Reduce PDF file sizes instantly with our advanced compression technology. Upload your PDF and choose your optimization level for the perfect balance of quality and file size.",
+          "Optimize, merge and split PDFs instantly, entirely in your browser. No uploads, no waiting, no limits.",
       },
       {
         name: "generator",

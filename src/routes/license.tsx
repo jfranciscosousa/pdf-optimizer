@@ -25,7 +25,7 @@ function LicensePage() {
           <div className="text-center">
             <div className="mb-4 flex items-center justify-center gap-3">
               <Scale className="size-10 text-blue-600" />
-              <h1 className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-4xl font-bold text-transparent">
+              <h1 className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-4xl leading-tight font-bold text-transparent">
                 {t.license.title}
               </h1>
             </div>

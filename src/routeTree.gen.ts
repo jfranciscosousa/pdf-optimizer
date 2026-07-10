@@ -9,13 +9,31 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from "./routes/__root";
+import { Route as SplitRouteImport } from "./routes/split";
 import { Route as PrivacyRouteImport } from "./routes/privacy";
+import { Route as OptimizeRouteImport } from "./routes/optimize";
+import { Route as MergeRouteImport } from "./routes/merge";
 import { Route as LicenseRouteImport } from "./routes/license";
 import { Route as IndexRouteImport } from "./routes/index";
 
+const SplitRoute = SplitRouteImport.update({
+  id: "/split",
+  path: "/split",
+  getParentRoute: () => rootRouteImport,
+} as any);
 const PrivacyRoute = PrivacyRouteImport.update({
   id: "/privacy",
   path: "/privacy",
+  getParentRoute: () => rootRouteImport,
+} as any);
+const OptimizeRoute = OptimizeRouteImport.update({
+  id: "/optimize",
+  path: "/optimize",
+  getParentRoute: () => rootRouteImport,
+} as any);
+const MergeRoute = MergeRouteImport.update({
+  id: "/merge",
+  path: "/merge",
   getParentRoute: () => rootRouteImport,
 } as any);
 const LicenseRoute = LicenseRouteImport.update({
@@ -32,40 +50,80 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   "/": typeof IndexRoute;
   "/license": typeof LicenseRoute;
+  "/merge": typeof MergeRoute;
+  "/optimize": typeof OptimizeRoute;
   "/privacy": typeof PrivacyRoute;
+  "/split": typeof SplitRoute;
 }
 export interface FileRoutesByTo {
   "/": typeof IndexRoute;
   "/license": typeof LicenseRoute;
+  "/merge": typeof MergeRoute;
+  "/optimize": typeof OptimizeRoute;
   "/privacy": typeof PrivacyRoute;
+  "/split": typeof SplitRoute;
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
   "/": typeof IndexRoute;
   "/license": typeof LicenseRoute;
+  "/merge": typeof MergeRoute;
+  "/optimize": typeof OptimizeRoute;
   "/privacy": typeof PrivacyRoute;
+  "/split": typeof SplitRoute;
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "/" | "/license" | "/privacy";
+  fullPaths: "/" | "/license" | "/merge" | "/optimize" | "/privacy" | "/split";
   fileRoutesByTo: FileRoutesByTo;
-  to: "/" | "/license" | "/privacy";
-  id: "__root__" | "/" | "/license" | "/privacy";
+  to: "/" | "/license" | "/merge" | "/optimize" | "/privacy" | "/split";
+  id:
+    | "__root__"
+    | "/"
+    | "/license"
+    | "/merge"
+    | "/optimize"
+    | "/privacy"
+    | "/split";
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute;
   LicenseRoute: typeof LicenseRoute;
+  MergeRoute: typeof MergeRoute;
+  OptimizeRoute: typeof OptimizeRoute;
   PrivacyRoute: typeof PrivacyRoute;
+  SplitRoute: typeof SplitRoute;
 }
 
 declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
+    "/split": {
+      id: "/split";
+      path: "/split";
+      fullPath: "/split";
+      preLoaderRoute: typeof SplitRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     "/privacy": {
       id: "/privacy";
       path: "/privacy";
       fullPath: "/privacy";
       preLoaderRoute: typeof PrivacyRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/optimize": {
+      id: "/optimize";
+      path: "/optimize";
+      fullPath: "/optimize";
+      preLoaderRoute: typeof OptimizeRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/merge": {
+      id: "/merge";
+      path: "/merge";
+      fullPath: "/merge";
+      preLoaderRoute: typeof MergeRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     "/license": {
@@ -88,7 +146,10 @@ declare module "@tanstack/react-router" {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LicenseRoute: LicenseRoute,
+  MergeRoute: MergeRoute,
+  OptimizeRoute: OptimizeRoute,
   PrivacyRoute: PrivacyRoute,
+  SplitRoute: SplitRoute,
 };
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

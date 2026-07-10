@@ -15,14 +15,14 @@ export function UniversalFooter() {
               to="/privacy"
               className="font-medium transition-colors hover:text-blue-600"
             >
-              {t.home.privacyPolicy}
+              {t.common.privacyPolicy}
             </Link>
             <span className="text-gray-400">•</span>
             <Link
               to="/license"
               className="font-medium transition-colors hover:text-blue-600"
             >
-              {t.home.license}
+              {t.common.license}
             </Link>
             <span className="text-gray-400">•</span>
             <a
@@ -32,7 +32,7 @@ export function UniversalFooter() {
               className="flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
             >
               <GitHubIcon className="size-4" />
-              {t.home.github}
+              {t.common.github}
             </a>
             <span className="text-gray-400">•</span>
             <a
@@ -40,7 +40,7 @@ export function UniversalFooter() {
               className="flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
             >
               <Mail className="size-4" />
-              {t.home.email}
+              {t.common.email}
             </a>
           </div>
         </div>

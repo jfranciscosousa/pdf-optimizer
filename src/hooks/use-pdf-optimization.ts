@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { optimizePdf as optimizePdfWorker } from "../worker/pdf-optimizer-worker";
+import { downloadBlobUrl } from "../lib/download";
 import pLimit from "p-limit";
 
 type OptimizationLevel = "light" | "medium" | "heavy";
@@ -92,12 +93,7 @@ export function usePdfOptimization(): UsePdfOptimizationReturn {
     setFileResults((prev) => {
       const result = prev[index];
       if (result?.optimizedUrl) {
-        const link = document.createElement("a");
-        link.href = result.optimizedUrl;
-        link.download = `optimized_${result.file.name}`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        downloadBlobUrl(result.optimizedUrl, `optimized_${result.file.name}`);
       }
       return prev;
     });

@@ -12,3 +12,7 @@ autoInstallPeers: false
 publicHoistPattern:
   - "@tanstack/react-start-server"
 minimumReleaseAge: 7200
+allowBuilds:
+  esbuild: true
+  sharp: true
+  workerd: true
