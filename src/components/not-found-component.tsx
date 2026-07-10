@@ -31,13 +31,12 @@ export function NotFoundComponent() {
 
               <div className="space-y-4">
                 <Button
-                  asChild
+                  render={<Link to="/" />}
+                  nativeButton={false}
                   className="h-12 w-full bg-linear-to-r from-blue-600 to-purple-600 text-lg shadow-lg transition-all hover:from-blue-700 hover:to-purple-700 hover:shadow-xl"
                 >
-                  <Link to="/">
-                    <Home className="mr-2 size-5" />
-                    {t.notFound.backToHome}
-                  </Link>
+                  <Home className="mr-2 size-5" />
+                  {t.notFound.backToHome}
                 </Button>
 
                 <div className="text-sm text-gray-500">

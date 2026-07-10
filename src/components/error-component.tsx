@@ -60,14 +60,13 @@ export function ErrorComponent({ error, reset }: ErrorComponentProps) {
                 </Button>
 
                 <Button
-                  asChild
+                  render={<Link to="/" />}
+                  nativeButton={false}
                   variant="outline"
                   className="h-12 w-full border-2 border-blue-500 bg-transparent text-lg text-blue-700 shadow-lg transition-all hover:bg-blue-50 hover:shadow-xl"
                 >
-                  <Link to="/">
-                    <Home className="mr-2 size-5" />
-                    {t.error.backToHome}
-                  </Link>
+                  <Home className="mr-2 size-5" />
+                  {t.error.backToHome}
                 </Button>
 
                 <div className="text-sm text-gray-500">

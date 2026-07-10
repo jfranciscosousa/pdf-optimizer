@@ -4,6 +4,11 @@ export default defineConfig({
   ignorePatterns: ["src/worker/bg-worker.js", "src/worker/gs-worker.js"],
   plugins: ["react", "import", "promise", "oxc"],
   jsPlugins: ["oxlint-tailwindcss"],
+  settings: {
+    tailwindcss: {
+      entryPoint: "src/styles/app.css",
+    },
+  },
   categories: {
     suspicious: "error",
   },

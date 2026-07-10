@@ -8,7 +8,11 @@
         "settings": {
           "tailwindCSS": {
             "experimental": {
-              "classRegex": ["cn\\(([^)]*)\\)", "clsx\\(([^)]*)\\)", "cva\\(([^)]*)\\)"]
+              "classRegex": [
+                "cn\\(([^)]*)\\)",
+                "clsx\\(([^)]*)\\)",
+                "cva\\(([^)]*)\\)"
+              ]
             }
           }
         }
