@@ -34,16 +34,20 @@ export function PdfDropzone({
   return (
     <div
       {...getRootProps()}
-      className={`flex h-32 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed text-lg transition-all ${
+      className={`flex h-32 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed text-base transition-colors ${
         isDragActive
-          ? "border-blue-500 bg-blue-50 text-blue-700"
-          : "border-gray-300 bg-gray-50 text-gray-500 hover:border-blue-400 hover:bg-blue-50"
+          ? "border-stamp bg-stamp/5 text-ink"
+          : "border-hairline bg-paper2/40 text-graphite hover:border-ink/40 hover:bg-paper2"
       }`}
     >
       <input {...getInputProps()} />
-      <Upload className="mb-2 size-8" />
-      <p className="text-center">{isDragActive ? activeLabel : idleLabel}</p>
-      <p className="mt-1 text-sm opacity-75">{hintLabel}</p>
+      <Upload className="mb-2 size-7" />
+      <p className="text-center font-medium">
+        {isDragActive ? activeLabel : idleLabel}
+      </p>
+      <p className="mt-1 font-mono text-xs tracking-wide text-graphite/70">
+        {hintLabel}
+      </p>
     </div>
   );
 }

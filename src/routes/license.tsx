@@ -1,10 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import { Button } from "~/components/ui/button";
-import { Scale, ArrowLeft, FileText } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { GitHubIcon } from "~/components/icons/github";
 import { useLocale } from "~/hooks/use-locale";
 
 export const Route = createFileRoute("/license")({
+  head: () => ({
+    meta: [
+      {
+        title: "License - PDF Optimizer",
+      },
+      {
+        name: "description",
+        content:
+          "PDF Optimizer is open source, released under the MIT License.",
+      },
+    ],
+  }),
   component: LicensePage,
 });
 
@@ -12,75 +23,88 @@ function LicensePage() {
   const { t } = useLocale();
 
   return (
-    <div className="min-h-screen">
-      <div className="relative z-10 container mx-auto max-w-4xl px-4 py-8">
-        <div className="mb-8">
-          <Link to="/">
-            <Button variant="ghost" className="mb-4">
-              <ArrowLeft className="mr-2 size-4" />
-              {t.license.backToHome}
-            </Button>
-          </Link>
+    <main className="min-h-screen">
+      <div className="container mx-auto max-w-3xl px-6 py-8">
+        <Link
+          to="/"
+          className="group inline-flex items-center gap-1.5 text-graphite transition-colors hover:text-ink"
+        >
+          <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5 motion-reduce:transition-none" />
+          <span className="font-mono text-xs tracking-wide">
+            {t.license.backToHome}
+          </span>
+        </Link>
 
-          <div className="text-center">
-            <div className="mb-4 flex items-center justify-center gap-3">
-              <Scale className="size-10 text-blue-600" />
-              <h1 className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-4xl leading-tight font-bold text-transparent">
-                {t.license.title}
-              </h1>
+        <header className="mt-10 border-t border-hairline pt-8">
+          <p className="font-mono text-[0.65rem] tracking-[0.22em] text-stamp uppercase">
+            /license
+          </p>
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+            {t.license.title}
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-graphite">
+            {t.license.subtitle}
+          </p>
+        </header>
+
+        <section className="mt-12 border-y border-hairline py-6">
+          <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
+            <div>
+              <p className="font-mono text-[0.65rem] tracking-[0.22em] text-graphite uppercase">
+                {t.license.spdxLabel}
+              </p>
+              <a
+                href="https://spdx.org/licenses/MIT.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-1.5 inline-flex items-center gap-1.5 text-xl font-semibold text-ink"
+              >
+                MIT
+                <ArrowUpRight className="size-4 text-stamp transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none" />
+              </a>
             </div>
-            <p className="mx-auto max-w-2xl text-lg text-gray-600">
-              {t.license.subtitle}
-            </p>
+            <a
+              href="https://github.com/jfranciscosousa/pdf-optimizer"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-graphite transition-colors hover:text-ink"
+            >
+              <GitHubIcon className="size-4" />
+              <span className="font-mono text-xs tracking-wide">
+                {t.license.viewSource}
+              </span>
+            </a>
           </div>
-        </div>
+          <p className="mt-6 text-graphite">{t.license.copyright}</p>
+        </section>
 
-        <div className="space-y-6">
-          <Card className="border-0 bg-white/80 shadow-lg backdrop-blur-sm">
-            <CardContent className="p-8">
-              <div className="text-center">
-                <FileText className="mx-auto mb-4 size-12 text-gray-600" />
-                <p className="text-lg font-medium text-gray-800">
-                  {t.license.copyright}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+        <section className="divide-y divide-hairline">
+          <article className="py-10 first:pt-10">
+            <h2 className="flex items-baseline gap-3 text-lg font-semibold text-ink">
+              <span className="font-mono text-graphite">§</span>
+              {t.license.mitTitle}
+            </h2>
+            <p className="mt-4 text-justify leading-relaxed text-graphite">
+              {t.license.permission}
+            </p>
+            <div className="mt-4 rounded-lg border border-l-2 border-hairline border-l-stamp bg-paper2 p-4">
+              <p className="text-sm font-medium text-ink">
+                {t.license.conditions}
+              </p>
+            </div>
+          </article>
 
-          <Card className="border-0 bg-white/80 pt-0 shadow-lg backdrop-blur-sm">
-            <CardHeader className="rounded-t-lg bg-linear-to-r from-green-500 to-blue-600 py-6 text-white">
-              <CardTitle className="text-center text-2xl">
-                {t.license.mitTitle}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6 p-8">
-              <div className="space-y-4">
-                <div>
-                  <p className="text-justify leading-relaxed text-gray-700">
-                    {t.license.permission}
-                  </p>
-                </div>
-
-                <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
-                  <p className="text-sm font-medium text-blue-800">
-                    {t.license.conditions}
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-0 bg-white/80 shadow-lg backdrop-blur-sm">
-            <CardContent className="p-8">
-              <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">
-                <p className="text-justify font-mono text-sm leading-relaxed text-gray-700">
-                  {t.license.disclaimer}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+          <article className="py-10 last:pb-0">
+            <h2 className="flex items-baseline gap-3 text-lg font-semibold text-ink">
+              <span className="font-mono text-graphite">§</span>
+              {t.license.noWarranty}
+            </h2>
+            <p className="mt-4 text-justify font-mono text-sm leading-relaxed text-graphite">
+              {t.license.disclaimer}
+            </p>
+          </article>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }

@@ -10,7 +10,6 @@ import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
 import {
   Layers,
-  Sparkles,
   Loader2,
   Download,
   X,
@@ -55,38 +54,38 @@ function MergePage() {
 
   return (
     <div className="min-h-screen">
-      <div className="relative z-10 container mx-auto max-w-6xl px-4 py-8">
+      <div className="container mx-auto max-w-6xl px-6 py-8">
         <ToolNav />
 
         <div className="mb-12 text-center">
-          <Link to="/" className="mb-6 flex items-center justify-center gap-3">
-            <div className="relative">
-              <Layers className="size-12 text-blue-600" />
-              <Sparkles className="absolute -top-2 -right-2 size-6 animate-pulse text-yellow-500" />
-            </div>
-            <h1 className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-5xl leading-tight font-bold text-transparent">
+          <Link to="/" className="mb-5 inline-flex items-center gap-2.5">
+            <span
+              aria-hidden
+              className="inline-block size-2 rotate-45 bg-stamp"
+            />
+            <h1 className="text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
               {t.merge.title}
             </h1>
           </Link>
-          <p className="mx-auto max-w-2xl text-xl leading-relaxed text-gray-600">
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-graphite">
             {t.merge.subtitle}
           </p>
         </div>
 
         <div className="mx-auto max-w-3xl">
-          <Card className="border-0 bg-white/80 pt-0 shadow-2xl backdrop-blur-sm">
-            <CardHeader className="rounded-t-lg bg-linear-to-r from-blue-500 to-purple-600 py-4 text-white">
-              <CardTitle className="flex items-center gap-2 text-2xl">
-                <Layers className="size-6" />
+          <Card className="border border-hairline bg-card shadow-sm">
+            <CardHeader className="border-b border-hairline bg-paper2 py-4">
+              <CardTitle className="flex items-center gap-2 text-xl text-ink">
+                <Layers className="size-5" />
                 {t.merge.uploadTitle}
               </CardTitle>
-              <CardDescription className="text-blue-100">
+              <CardDescription className="text-graphite">
                 {t.merge.uploadDescription}
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-8 p-8 pt-0">
+            <CardContent className="space-y-8 p-8">
               <div className="space-y-4">
-                <Label className="text-lg font-semibold text-gray-700">
+                <Label className="text-base font-semibold text-ink">
                   {t.merge.selectFiles}
                 </Label>
                 <PdfDropzone
@@ -100,13 +99,13 @@ function MergePage() {
               {files.length > 0 && (
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <Label className="text-lg font-semibold text-gray-700">
+                    <Label className="text-base font-semibold text-ink">
                       {t.merge.selectedFilesLabel} ({files.length})
                     </Label>
                     <button
                       type="button"
                       onClick={clearAll}
-                      className="text-sm text-red-600 hover:text-red-800"
+                      className="text-sm text-destructive hover:text-destructive/80"
                     >
                       {t.merge.clearAll}
                     </button>
@@ -118,7 +117,7 @@ function MergePage() {
                           type="button"
                           onClick={() => moveFile(idx, "up")}
                           disabled={idx === 0}
-                          className="text-blue-600 hover:text-blue-800 disabled:opacity-30"
+                          className="text-graphite hover:text-ink disabled:opacity-30"
                         >
                           <ChevronUp className="size-4" />
                         </button>
@@ -126,14 +125,14 @@ function MergePage() {
                           type="button"
                           onClick={() => moveFile(idx, "down")}
                           disabled={idx === files.length - 1}
-                          className="text-blue-600 hover:text-blue-800 disabled:opacity-30"
+                          className="text-graphite hover:text-ink disabled:opacity-30"
                         >
                           <ChevronDown className="size-4" />
                         </button>
                         <button
                           type="button"
                           onClick={() => removeFile(idx)}
-                          className="text-red-600 hover:text-red-800"
+                          className="text-destructive hover:text-destructive/80"
                         >
                           <X className="size-4" />
                         </button>
@@ -146,7 +145,7 @@ function MergePage() {
               <Button
                 onClick={mergeFiles}
                 disabled={files.length < 2 || isLoading}
-                className="h-14 w-full bg-linear-to-r from-blue-600 to-purple-600 text-lg shadow-lg transition-all hover:from-blue-700 hover:to-purple-700 hover:shadow-xl"
+                className="h-14 w-full text-lg"
               >
                 {isLoading ? (
                   <>
@@ -163,7 +162,7 @@ function MergePage() {
 
               {result && (
                 <div className="space-y-3">
-                  <Label className="text-lg font-semibold text-gray-700">
+                  <Label className="text-base font-semibold text-ink">
                     {t.merge.resultLabel}
                   </Label>
                   {result.error ? (
@@ -172,7 +171,7 @@ function MergePage() {
                       size={0}
                       tone="error"
                       subtitle={
-                        <p className="text-sm text-red-600">
+                        <p className="text-sm text-destructive">
                           {t.merge.error}: {result.error}
                         </p>
                       }
@@ -183,11 +182,7 @@ function MergePage() {
                       size={result.size ?? 0}
                       tone="success"
                     >
-                      <Button
-                        onClick={downloadResult}
-                        size="sm"
-                        className="bg-green-600 text-white hover:bg-green-700"
-                      >
+                      <Button onClick={downloadResult} size="sm">
                         <Download className="mr-2 size-4" />
                         {t.merge.download}
                       </Button>

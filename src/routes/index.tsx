@@ -1,14 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
-import { Button } from "~/components/ui/button";
-import { FileText, Sparkles, Zap, Layers, Scissors } from "lucide-react";
+import { ArrowRight, Layers, Scissors, Zap } from "lucide-react";
 import { useLocale } from "~/hooks/use-locale";
+import { Button } from "~/components/ui/button";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -39,51 +32,95 @@ function Home() {
   const { t } = useLocale();
 
   return (
-    <div className="min-h-screen">
-      <div className="relative z-10 container mx-auto max-w-6xl px-4 py-8">
-        <div className="mb-12 text-center">
-          <div className="mb-6 flex items-center justify-center gap-3">
-            <div className="relative">
-              <FileText className="size-12 text-blue-600" />
-              <Sparkles className="absolute -top-2 -right-2 size-6 animate-pulse text-yellow-500" />
-            </div>
-            <h1 className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-5xl leading-tight font-bold text-transparent">
+    <main className="min-h-screen">
+      <div className="container mx-auto max-w-5xl px-6">
+        <header className="flex items-center justify-between py-8">
+          <Link to="/" className="flex items-center gap-2.5">
+            <span
+              aria-hidden
+              className="inline-block size-2 rotate-45 bg-stamp"
+            />
+            <span className="text-base font-semibold tracking-tight text-ink">
               {t.landing.title}
-            </h1>
-          </div>
-          <p className="mx-auto max-w-2xl text-xl leading-relaxed text-gray-600">
-            {t.landing.subtitle}
-          </p>
-        </div>
+            </span>
+          </Link>
+          <span className="font-mono text-[0.65rem] tracking-[0.22em] text-graphite uppercase">
+            {t.landing.eyebrow}
+          </span>
+        </header>
 
-        <div className="grid gap-8 md:grid-cols-3">
-          {tools.map(({ to, icon: Icon, titleKey, descriptionKey }) => (
-            <Card
-              key={to}
-              className="flex flex-col border-0 bg-white/80 pt-0 shadow-2xl backdrop-blur-sm"
-            >
-              <CardHeader className="rounded-t-lg bg-linear-to-r from-blue-500 to-purple-600 py-6 text-white">
-                <div className="flex justify-center">
-                  <Icon className="size-10" />
+        <section className="max-w-3xl py-16 sm:py-24">
+          <p className="font-mono text-[0.65rem] tracking-[0.22em] text-stamp uppercase">
+            {t.landing.eyebrow}
+          </p>
+          <h1 className="mt-7 text-4xl leading-[1.06] font-semibold tracking-tight text-ink sm:text-5xl md:text-6xl">
+            {t.landing.headline}
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-graphite">
+            {t.landing.lede}
+          </p>
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <Link to="/optimize">
+              <Button
+                size="lg"
+                className="h-12 gap-2 px-6 text-base font-medium"
+              >
+                {t.nav.optimize}
+                <ArrowRight className="size-4" />
+              </Button>
+            </Link>
+            <p className="font-mono text-xs tracking-wide text-graphite">
+              {t.landing.trustLine}
+            </p>
+          </div>
+        </section>
+
+        <section className="border-t border-hairline">
+          <div className="grid divide-y divide-hairline sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            {tools.map(({ to, icon: Icon, titleKey, descriptionKey }) => (
+              <Link
+                key={to}
+                to={to}
+                className="group relative flex flex-col gap-5 p-8 transition-colors hover:bg-paper2 focus-visible:bg-paper2 focus-visible:ring-2 focus-visible:ring-stamp focus-visible:outline-none focus-visible:ring-inset"
+              >
+                <span className="font-mono text-xs tracking-wide text-graphite">
+                  {to}
+                </span>
+                <div className="flex items-center gap-2.5">
+                  <Icon className="size-5 text-ink" />
+                  <span className="text-lg font-medium text-ink">
+                    {t.landing[titleKey]}
+                  </span>
                 </div>
-                <CardTitle className="text-center text-2xl">
-                  {t.landing[titleKey]}
-                </CardTitle>
-                <CardDescription className="text-center text-blue-100">
+                <p className="text-sm leading-relaxed text-graphite">
                   {t.landing[descriptionKey]}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex flex-1 flex-col justify-end p-8 pt-0">
-                <Link to={to}>
-                  <Button className="h-12 w-full bg-linear-to-r from-blue-600 to-purple-600 text-lg shadow-lg transition-all hover:from-blue-700 hover:to-purple-700 hover:shadow-xl">
-                    {t.landing.openTool}
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                </p>
+                <span className="mt-auto flex items-center gap-1.5 pt-4 font-mono text-xs tracking-wide text-stamp">
+                  {t.landing.openTool}
+                  <span className="transition-transform duration-200 ease-out group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none">
+                    <ArrowRight className="size-3.5" />
+                  </span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-y border-hairline">
+          <div className="grid divide-y divide-hairline sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            {t.landing.principles.map((p) => (
+              <div key={p.label} className="p-8">
+                <p className="font-mono text-[0.65rem] tracking-[0.22em] text-stamp uppercase">
+                  {p.label}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-graphite">
+                  {p.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }

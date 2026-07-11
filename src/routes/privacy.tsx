@@ -1,8 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import { Button } from "~/components/ui/button";
 import {
-  Shield,
   ArrowLeft,
   CheckCircle,
   Server,
@@ -10,181 +7,188 @@ import {
   Lock,
   Hammer,
   Mail,
+  Code2,
 } from "lucide-react";
 import { GitHubIcon } from "~/components/icons/github";
 import { useLocale } from "~/hooks/use-locale";
 
 export const Route = createFileRoute("/privacy")({
+  head: () => ({
+    meta: [
+      {
+        title: "Privacy policy - PDF Optimizer",
+      },
+      {
+        name: "description",
+        content:
+          "PDF Optimizer processes everything locally in your browser. No uploads, no tracking, no data storage.",
+      },
+    ],
+  }),
   component: PrivacyPage,
 });
 
 function PrivacyPage() {
   const { t } = useLocale();
 
+  const sections = [
+    {
+      icon: Lock,
+      title: t.privacy.localProcessingTitle,
+      content: t.privacy.localProcessingContent,
+    },
+    {
+      icon: Eye,
+      title: t.privacy.noTrackingTitle,
+      content: t.privacy.noTrackingContent,
+    },
+    {
+      icon: CheckCircle,
+      title: t.privacy.noDataStorageTitle,
+      content: t.privacy.noDataStorageContent,
+    },
+    {
+      icon: Code2,
+      title: t.privacy.openSourceTitle,
+      content: t.privacy.openSourceContent,
+    },
+    {
+      icon: Server,
+      title: t.privacy.hostingTitle,
+      content: t.privacy.hostingContent,
+      list: t.privacy.hostingList,
+      note: t.privacy.hostingNote,
+      accent: true,
+    },
+    {
+      icon: Hammer,
+      title: t.privacy.technicalTitle,
+      content: t.privacy.technicalContent,
+      list: t.privacy.technicalList,
+    },
+  ];
+
   return (
-    <div className="min-h-screen">
-      <div className="relative z-10 container mx-auto max-w-4xl px-4 py-8">
-        <div className="mb-8">
-          <Link to="/">
-            <Button variant="ghost" className="mb-4">
-              <ArrowLeft className="mr-2 size-4" />
-              {t.privacy.backToHome}
-            </Button>
-          </Link>
+    <main className="min-h-screen">
+      <div className="container mx-auto max-w-3xl px-6 py-8">
+        <Link
+          to="/"
+          className="group inline-flex items-center gap-1.5 text-graphite transition-colors hover:text-ink"
+        >
+          <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5 motion-reduce:transition-none" />
+          <span className="font-mono text-xs tracking-wide">
+            {t.privacy.backToHome}
+          </span>
+        </Link>
 
-          <div className="text-center">
-            <div className="mb-4 flex items-center justify-center gap-3">
-              <Shield className="size-10 text-blue-600" />
-              <h1 className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-4xl leading-tight font-bold text-transparent">
-                {t.privacy.title}
-              </h1>
-            </div>
-            <p className="mx-auto max-w-2xl text-lg text-gray-600">
-              {t.privacy.subtitle}
-            </p>
-            <p className="mt-2 text-sm text-gray-500">
-              {t.privacy.lastUpdated}: August 2025
-            </p>
-          </div>
-        </div>
+        <header className="mt-10 border-t border-hairline pt-8">
+          <p className="font-mono text-[0.65rem] tracking-[0.22em] text-stamp uppercase">
+            /privacy
+          </p>
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+            {t.privacy.title}
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-graphite">
+            {t.privacy.subtitle}
+          </p>
+          <p className="mt-3 font-mono text-xs tracking-wide text-graphite/70">
+            {t.privacy.lastUpdated}: {t.privacy.lastUpdatedDate}
+          </p>
+        </header>
 
-        {/* Privacy Sections */}
-        <div className="space-y-6">
-          {/* Local Processing */}
-          <Card className="border-0 bg-white/80 pt-0 shadow-lg backdrop-blur-sm">
-            <CardHeader className="rounded-t-lg bg-linear-to-r from-green-500 to-emerald-600 py-4 text-white">
-              <CardTitle className="flex items-center gap-2">
-                <Lock className="size-5" />
-                {t.privacy.localProcessingTitle}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="px-8 py-0">
-              <p className="leading-relaxed text-gray-700">
-                {t.privacy.localProcessingContent}
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* No Tracking */}
-          <Card className="border-0 bg-white/80 pt-0 shadow-lg backdrop-blur-sm">
-            <CardHeader className="rounded-t-lg bg-linear-to-r from-blue-500 to-cyan-600 py-4 text-white">
-              <CardTitle className="flex items-center gap-2">
-                <Eye className="size-5" />
-                {t.privacy.noTrackingTitle}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="px-8 py-0">
-              <p className="leading-relaxed text-gray-700">
-                {t.privacy.noTrackingContent}
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* No Data Storage */}
-          <Card className="border-0 bg-white/80 pt-0 shadow-lg backdrop-blur-sm">
-            <CardHeader className="rounded-t-lg bg-linear-to-r from-purple-500 to-pink-600 py-4 text-white">
-              <CardTitle className="flex items-center gap-2">
-                <CheckCircle className="size-5" />
-                {t.privacy.noDataStorageTitle}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="px-8 py-0">
-              <p className="leading-relaxed text-gray-700">
-                {t.privacy.noDataStorageContent}
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Hosting Disclosure */}
-          <Card className="border-0 bg-white/80 pt-0 shadow-lg backdrop-blur-sm">
-            <CardHeader className="rounded-t-lg bg-linear-to-r from-orange-500 to-red-600 py-4 text-white">
-              <CardTitle className="flex items-center gap-2">
-                <Server className="size-5" />
-                {t.privacy.hostingTitle}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 px-8 py-0">
-              <p className="leading-relaxed text-gray-700">
-                {t.privacy.hostingContent}
-              </p>
-              <ul className="ml-4 list-inside list-disc space-y-2 text-gray-700">
-                {t.privacy.hostingList.map((item: string, index: number) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-              <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-4">
-                <p className="font-medium text-yellow-800">
-                  {t.privacy.hostingNote}
+        <section className="mt-12 border-y border-hairline">
+          <div className="grid divide-y divide-hairline sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            {t.privacy.summary.map((s) => (
+              <div key={s.label} className="p-6">
+                <p className="font-mono text-[0.65rem] tracking-[0.22em] text-stamp uppercase">
+                  {s.label}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-graphite">
+                  {s.text}
                 </p>
               </div>
-            </CardContent>
-          </Card>
+            ))}
+          </div>
+        </section>
 
-          {/* Technical Implementation */}
-          <Card className="border-0 bg-white/80 pt-0 shadow-lg backdrop-blur-sm">
-            <CardHeader className="rounded-t-lg bg-linear-to-r from-indigo-500 to-purple-600 py-4 text-white">
-              <CardTitle className="flex items-center gap-2">
-                <Hammer className="size-5" />
-                {t.privacy.technicalTitle}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 px-8 py-0">
-              <p className="leading-relaxed text-gray-700">
-                {t.privacy.technicalContent}
-              </p>
-              <ul className="ml-4 list-inside list-disc space-y-2 text-gray-700">
-                {t.privacy.technicalList.map((item: string, index: number) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="border-0 bg-white/80 pt-0 shadow-lg backdrop-blur-sm">
-            <CardHeader className="rounded-t-lg bg-linear-to-r from-blue-500 to-purple-600 py-4 text-white">
-              <CardTitle className="flex items-center gap-2">
-                <Mail className="size-5" />
-                {t.privacy.contactTitle}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6 px-8 py-6">
-              <p className="leading-relaxed text-gray-700">
-                {t.privacy.contactContent}
-              </p>
-
-              <div className="space-y-4">
-                <div className="flex items-start gap-3 rounded-lg border border-blue-200 bg-blue-50 p-4">
-                  <Mail className="mt-1 size-5 text-blue-600" />
-                  <div>
-                    <p className="text-gray-700">{t.privacy.contactEmail}</p>
-                    <a
-                      href="mailto:francisco.sousa@hey.com"
-                      className="text-blue-600 underline hover:text-blue-800"
-                    >
-                      francisco.sousa@hey.com
-                    </a>
-                  </div>
+        <section className="divide-y divide-hairline">
+          {sections.map(
+            ({ icon: Icon, title, content, list, note, accent }) => (
+              <div key={title} className="py-10 first:pt-10 last:pb-0">
+                <div className="flex items-center gap-2.5">
+                  <Icon className="size-4 text-graphite" />
+                  <h2 className="text-lg font-semibold text-ink">{title}</h2>
                 </div>
-
-                <div className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4">
-                  <GitHubIcon className="mt-1 size-5 text-gray-600" />
-                  <div>
-                    <p className="text-gray-700">{t.privacy.contactGitHub}</p>
-                    <a
-                      href="https://github.com/jfranciscosousa/pdf-optimizer"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-600 underline hover:text-gray-800"
+                <div className="mt-4 space-y-4">
+                  <p className="leading-relaxed text-graphite">{content}</p>
+                  {list && (
+                    <ul className="ml-4 list-inside list-disc space-y-2 text-graphite">
+                      {list.map((item: string, index: number) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                  {note && (
+                    <div
+                      className={`rounded-lg border p-4 ${
+                        accent
+                          ? "border-l-2 border-hairline border-l-stamp bg-paper2"
+                          : "border-hairline bg-paper2"
+                      }`}
                     >
-                      github.com/jfranciscosousa/pdf-optimizer
-                    </a>
-                  </div>
+                      <p className="font-medium text-ink">{note}</p>
+                    </div>
+                  )}
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        </div>
+            ),
+          )}
+
+          <div className="py-10 last:pb-0">
+            <div className="flex items-center gap-2.5">
+              <Mail className="size-4 text-graphite" />
+              <h2 className="text-lg font-semibold text-ink">
+                {t.privacy.contactTitle}
+              </h2>
+            </div>
+            <p className="mt-4 leading-relaxed text-graphite">
+              {t.privacy.contactContent}
+            </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <a
+                href="mailto:francisco.sousa@hey.com"
+                className="group flex items-start gap-3 rounded-lg border border-hairline bg-card p-4 transition-colors hover:border-ink/30"
+              >
+                <Mail className="mt-0.5 size-5 text-graphite" />
+                <div>
+                  <p className="text-sm text-graphite">
+                    {t.privacy.contactEmail}
+                  </p>
+                  <p className="text-sm font-medium text-ink transition-colors group-hover:text-stamp">
+                    francisco.sousa@hey.com
+                  </p>
+                </div>
+              </a>
+              <a
+                href="https://github.com/jfranciscosousa/pdf-optimizer"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-3 rounded-lg border border-hairline bg-card p-4 transition-colors hover:border-ink/30"
+              >
+                <GitHubIcon className="mt-0.5 size-5 text-graphite" />
+                <div>
+                  <p className="text-sm text-graphite">
+                    {t.privacy.contactGitHub}
+                  </p>
+                  <p className="text-sm font-medium text-ink transition-colors group-hover:text-stamp">
+                    github.com/jfranciscosousa/pdf-optimizer
+                  </p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }

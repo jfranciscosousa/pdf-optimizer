@@ -11,15 +11,9 @@ interface FileRowProps {
 }
 
 const containerTone: Record<FileRowTone, string> = {
-  neutral: "border-blue-200 bg-blue-50",
-  success: "border-green-200 bg-green-50",
-  error: "border-red-200 bg-red-50",
-};
-
-const nameTone: Record<FileRowTone, string> = {
-  neutral: "text-blue-800",
-  success: "text-green-800",
-  error: "text-red-800",
+  neutral: "border-hairline",
+  success: "border-hairline border-l-2 border-l-success",
+  error: "border-hairline border-l-2 border-l-danger",
 };
 
 export function FileRow({
@@ -31,13 +25,13 @@ export function FileRow({
 }: FileRowProps) {
   return (
     <div
-      className={`flex items-center justify-between rounded-lg border p-3 ${containerTone[tone]}`}
+      className={`flex items-center justify-between rounded-lg border bg-card p-3 ${containerTone[tone]}`}
     >
       <div className="flex-1">
-        <p className={`font-medium ${nameTone[tone]}`}>{name}</p>
+        <p className="font-medium text-ink">{name}</p>
         {subtitle ?? (
-          <p className="text-sm text-blue-600">
-            Size: {(size / 1024 / 1024).toFixed(2)} MB
+          <p className="font-mono text-sm text-graphite">
+            {(size / 1024 / 1024).toFixed(2)} MB
           </p>
         )}
       </div>

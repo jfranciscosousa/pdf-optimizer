@@ -21,6 +21,10 @@ export const locales = {
       title: "PDF Optimizer",
       subtitle:
         "Optimize, merge and split PDFs instantly, entirely in your browser. No uploads, no waiting, no limits.",
+      eyebrow: "Private PDF tools",
+      headline: "Optimize, merge, and split PDFs — entirely in your browser.",
+      lede: "Everything runs locally and privately. Your files never leave your device. No accounts, no limits, no tracking.",
+      trustLine: "No uploads · No tracking · Open source",
       optimizeTitle: "Optimize",
       optimizeDescription:
         "Reduce PDF file sizes with adjustable compression levels",
@@ -29,6 +33,11 @@ export const locales = {
       splitTitle: "Split",
       splitDescription: "Break a PDF apart into individual page files",
       openTool: "Open tool",
+      principles: [
+        { label: "Local", text: "Everything runs in your browser." },
+        { label: "Private", text: "Files never leave your device." },
+        { label: "Free", text: "Open source, no limits, no account." },
+      ],
     },
     optimize: {
       title: "PDF Optimizer",
@@ -132,6 +141,9 @@ export const locales = {
         "The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.",
       disclaimer:
         'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.',
+      spdxLabel: "SPDX identifier",
+      viewSource: "View source",
+      noWarranty: "No warranty",
     },
     privacy: {
       title: "Privacy policy",
@@ -139,6 +151,21 @@ export const locales = {
         "Your privacy is our top priority. Here's exactly how we protect it.",
       backToHome: "Back to home",
       lastUpdated: "Last updated",
+      lastUpdatedDate: "July 2026",
+      summary: [
+        {
+          label: "Local",
+          text: "Files never leave your device.",
+        },
+        {
+          label: "No tracking",
+          text: "Zero cookies, zero analytics.",
+        },
+        {
+          label: "No storage",
+          text: "Nothing retained when you leave.",
+        },
+      ],
       localProcessingTitle: "Local processing",
       localProcessingContent:
         "All PDF optimization happens directly in your browser using WebAssembly technology. Your files are processed in memory and never transmitted to any server. When you close the page, all data is automatically discarded.",
@@ -195,6 +222,11 @@ export const locales = {
       title: "Optimizador de PDF",
       subtitle:
         "Optimize, junte e divida PDFs instantaneamente, directamente no seu navegador. Sem envios, sem espera, sem limites.",
+      eyebrow: "Ferramentas PDF privadas",
+      headline:
+        "Optimize, junte e divida PDFs — directamente no seu navegador.",
+      lede: "Tudo corre localmente e de forma privada. Os seus ficheiros nunca saem do seu dispositivo. Sem contas, sem limites, sem rastreamento.",
+      trustLine: "Sem envios · Sem rastreamento · Código aberto",
       optimizeTitle: "Optimizar",
       optimizeDescription:
         "Reduza o tamanho de ficheiros PDF com níveis de compressão ajustáveis",
@@ -203,6 +235,17 @@ export const locales = {
       splitTitle: "Dividir",
       splitDescription: "Separe um PDF em ficheiros individuais por página",
       openTool: "Abrir ferramenta",
+      principles: [
+        {
+          label: "Local",
+          text: "Tudo corre no seu navegador.",
+        },
+        {
+          label: "Privado",
+          text: "Os seus ficheiros nunca saem do seu dispositivo.",
+        },
+        { label: "Grátis", text: "Código aberto, sem limites, sem conta." },
+      ],
     },
     optimize: {
       title: "Optimizador de PDF",
@@ -308,6 +351,9 @@ export const locales = {
         "O aviso de copyright acima e este aviso de permissão devem ser incluídos em todas as cópias ou partes substanciais do Software.",
       disclaimer:
         'O SOFTWARE É FORNECIDO "COMO ESTÁ", SEM GARANTIA DE QUALQUER TIPO, EXPRESSA OU IMPLÍCITA, INCLUINDO MAS NÃO LIMITADO ÀS GARANTIAS DE COMERCIALIZAÇÃO, ADEQUAÇÃO A UM PROPÓSITO PARTICULAR E NÃO VIOLAÇÃO. EM CASO ALGUM OS AUTORES OU DETENTORES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR QUALQUER RECLAMAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA NUMA ACÇÃO DE CONTRATO, DELITO OU OUTRA, DECORRENTE DE, FORA DE OU EM CONEXÃO COM O SOFTWARE OU O USO OU OUTRAS NEGOCIAÇÕES NO SOFTWARE.',
+      spdxLabel: "Identificador SPDX",
+      viewSource: "Ver código",
+      noWarranty: "Sem garantia",
     },
     privacy: {
       title: "Política de privacidade",
@@ -315,6 +361,21 @@ export const locales = {
         "A sua privacidade é a nossa prioridade máxima. Aqui está exactamente como a protegemos.",
       backToHome: "Voltar ao início",
       lastUpdated: "Última actualização",
+      lastUpdatedDate: "Julho 2026",
+      summary: [
+        {
+          label: "Local",
+          text: "Os ficheiros nunca saem do seu dispositivo.",
+        },
+        {
+          label: "Sem rastreamento",
+          text: "Zero cookies, zero análises.",
+        },
+        {
+          label: "Sem armazenamento",
+          text: "Nada guardado ao sair.",
+        },
+      ],
       localProcessingTitle: "Processamento local",
       localProcessingContent:
         "Toda a optimização de PDF acontece directamente no seu navegador usando tecnologia WebAssembly. Os seus ficheiros são processados na memória e nunca transmitidos para qualquer servidor. Quando fecha a página, todos os dados são automaticamente descartados.",

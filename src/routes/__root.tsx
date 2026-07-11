@@ -33,7 +33,7 @@ export const Route = createRootRoute({
       },
       {
         name: "theme-color",
-        content: "#2563eb",
+        content: "#fbfbf9",
       },
       {
         name: "apple-mobile-web-app-capable",

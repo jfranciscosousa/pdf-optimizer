@@ -1,7 +1,7 @@
 {
   "name": "PDF Optimizer",
   "short_name": "PDF Optimizer",
-  "description": "Reduce PDF file sizes instantly with advanced compression technology",
+  "description": "Optimize, merge and split PDFs instantly, entirely in your browser. No uploads, no waiting, no limits.",
   "icons": [
     {
       "src": "favicon.svg",
@@ -21,7 +21,7 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#2563eb",
-  "background_color": "#ffffff",
+  "theme_color": "#fbfbf9",
+  "background_color": "#fbfbf9",
   "categories": ["productivity", "utilities"]
 }
