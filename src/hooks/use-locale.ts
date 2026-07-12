@@ -1,11 +1,12 @@
-import { locales } from "~/lib/locales";
+import { locales, type Locale } from "~/lib/locales";
 import { Route } from "~/routes/__root";
 
 export function useLocale() {
-  const language = Route.useLoaderData()?.language;
-  const t = locales[language as keyof typeof locales] || locales.en;
+  const language = (Route.useLoaderData()?.language ?? "en") as Locale;
+  const t = locales[language] || locales.en;
 
   return {
+    language,
     t,
   };
 }

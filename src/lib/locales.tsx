@@ -2,6 +2,17 @@ export type Locale = "en" | "pt";
 
 export const defaultLocale: Locale = "en";
 
+export const localeList: Locale[] = ["en", "pt"];
+
+export const localeLabels: Record<Locale, string> = {
+  en: "English",
+  pt: "Português",
+};
+
+export function isLocale(value: string): value is Locale {
+  return value === "en" || value === "pt";
+}
+
 export const locales = {
   en: {
     common: {
@@ -11,6 +22,8 @@ export const locales = {
       github: "GitHub",
       email: "Email",
       poweredBy: "Powered by Ghostscript",
+      toggleTheme: "Toggle theme",
+      language: "Language",
     },
     nav: {
       optimize: "Optimize",
@@ -159,7 +172,7 @@ export const locales = {
         },
         {
           label: "No tracking",
-          text: "Zero cookies, zero analytics.",
+          text: "No analytics, no third-party tracking.",
         },
         {
           label: "No storage",
@@ -171,7 +184,10 @@ export const locales = {
         "All PDF optimization happens directly in your browser using WebAssembly technology. Your files are processed in memory and never transmitted to any server. When you close the page, all data is automatically discarded.",
       noTrackingTitle: "No tracking",
       noTrackingContent:
-        "We don't use any analytics, cookies, tracking pixels, or third-party scripts. We have no way to identify you or track your behavior across sessions. Your usage is completely anonymous.",
+        "We don't use analytics, tracking pixels, or third-party scripts. We have no way to identify you or track your behavior across sessions. Your usage is completely anonymous.",
+      preferencesTitle: "Preference cookies",
+      preferencesContent:
+        "We set two strictly-necessary preference cookies to remember your theme and language choices: pdf-opt-theme and pdf-opt-locale. They contain no identifier, are never sent to any third party, and are only used to render the site in the theme and language you selected. They are not analytics cookies.",
       noDataStorageTitle: "No data storage",
       noDataStorageContent:
         "We don't store, cache, or retain any of your files or personal information. Everything happens in your browser's temporary memory and is automatically cleared when you navigate away or close the tab.",
@@ -212,6 +228,8 @@ export const locales = {
       github: "GitHub",
       email: "Email",
       poweredBy: "Powered by Ghostscript",
+      toggleTheme: "Alternar tema",
+      language: "Idioma",
     },
     nav: {
       optimize: "Optimizar",
@@ -369,7 +387,7 @@ export const locales = {
         },
         {
           label: "Sem rastreamento",
-          text: "Zero cookies, zero análises.",
+          text: "Sem análises, sem rastreamento de terceiros.",
         },
         {
           label: "Sem armazenamento",
@@ -381,7 +399,10 @@ export const locales = {
         "Toda a optimização de PDF acontece directamente no seu navegador usando tecnologia WebAssembly. Os seus ficheiros são processados na memória e nunca transmitidos para qualquer servidor. Quando fecha a página, todos os dados são automaticamente descartados.",
       noTrackingTitle: "Sem rastreamento",
       noTrackingContent:
-        "Não usamos análises, cookies, pixels de rastreamento ou scripts de terceiros. Não temos forma de o identificar ou rastrear o seu comportamento entre sessões. A sua utilização é completamente anónima.",
+        "Não usamos análises, pixels de rastreamento ou scripts de terceiros. Não temos forma de o identificar ou rastrear o seu comportamento entre sessões. A sua utilização é completamente anónima.",
+      preferencesTitle: "Cookies de preferência",
+      preferencesContent:
+        "Definimos dois cookies estritamente necessários para memorizar o seu tema e idioma: pdf-opt-theme e pdf-opt-locale. Não contêm nenhum identificador, nunca são enviados para terceiros e servem apenas para mostrar o sítio no tema e idioma que escolheu. Não são cookies de análise.",
       noDataStorageTitle: "Sem armazenamento de dados",
       noDataStorageContent:
         "Não armazenamos, guardamos em cache ou retemos nenhum dos seus ficheiros ou informações pessoais. Tudo acontece na memória temporária do seu navegador e é automaticamente limpo quando navega para outro lado ou fecha o separador.",

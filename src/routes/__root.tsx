@@ -5,8 +5,10 @@ import * as React from "react";
 import { AnimatedBackground } from "~/components/animated-background";
 import { ErrorComponent } from "~/components/error-component";
 import { NotFoundComponent } from "~/components/not-found-component";
+import { PreferencesControl } from "~/components/preferences-control";
 import { UniversalFooter } from "~/components/universal-footer";
 import loadLanguage from "~/server/load-language";
+import loadTheme from "~/server/load-theme";
 import appCss from "~/styles/app.css?url";
 
 export const Route = createRootRoute({
@@ -52,19 +54,27 @@ export const Route = createRootRoute({
     ],
   }),
   shellComponent: RootDocument,
-  loader: async () => ({ language: await loadLanguage() }),
+  loader: async () => ({
+    language: await loadLanguage(),
+    theme: await loadTheme(),
+  }),
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const { language, theme } = Route.useLoaderData();
+  const themeClass =
+    theme === "dark" ? "dark" : theme === "light" ? "light" : undefined;
+
   return (
-    <html lang="en">
+    <html lang={language} className={themeClass}>
       <head>
         <HeadContent />
       </head>
       <body>
         <AnimatedBackground />
+        <PreferencesControl />
         {children}
         <UniversalFooter />
         <TanStackRouterDevtools position="bottom-right" />

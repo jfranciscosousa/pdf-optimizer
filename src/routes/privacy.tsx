@@ -8,6 +8,7 @@ import {
   Hammer,
   Mail,
   Code2,
+  Settings,
 } from "lucide-react";
 import { GitHubIcon } from "~/components/icons/github";
 import { useLocale } from "~/hooks/use-locale";
@@ -41,6 +42,11 @@ function PrivacyPage() {
       icon: Eye,
       title: t.privacy.noTrackingTitle,
       content: t.privacy.noTrackingContent,
+    },
+    {
+      icon: Settings,
+      title: t.privacy.preferencesTitle,
+      content: t.privacy.preferencesContent,
     },
     {
       icon: CheckCircle,

@@ -57,8 +57,61 @@
   --sidebar-ring: var(--stamp);
 }
 
+:root.dark {
+  color-scheme: dark;
+
+  --paper: oklch(0.165 0.004 85);
+  --paper2: oklch(0.21 0.005 85);
+  --ink: oklch(0.94 0.004 85);
+  --graphite: oklch(0.68 0.006 85);
+  --hairline: oklch(0.27 0.005 85);
+  --stamp: oklch(0.71 0.15 28);
+
+  --surface: oklch(0.205 0.005 85);
+
+  --success: oklch(0.72 0.14 155);
+  --success-soft: oklch(0.24 0.04 155);
+  --warning: oklch(0.78 0.14 70);
+  --warning-soft: oklch(0.24 0.04 70);
+  --danger: oklch(0.68 0.18 25);
+  --danger-soft: oklch(0.24 0.05 25);
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: var(--paper2);
+  --secondary-foreground: var(--ink);
+  --muted: var(--paper2);
+  --muted-foreground: var(--graphite);
+  --accent: var(--paper2);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.68 0.18 25);
+  --destructive-foreground: oklch(0.68 0.18 25);
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--stamp);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: var(--paper);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--ink);
+  --sidebar-primary-foreground: var(--paper);
+  --sidebar-accent: var(--paper2);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--hairline);
+  --sidebar-ring: var(--stamp);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     color-scheme: dark;
 
     --paper: oklch(0.165 0.004 85);
@@ -165,10 +218,12 @@
 }
 
 @theme {
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", sans-serif;
-  --font-mono: ui-monospace, "SF Mono", "Roboto Mono", "IBM Plex Mono",
-    "Cascadia Code", Menlo, Consolas, monospace;
+  --font-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", sans-serif;
+  --font-mono:
+    ui-monospace, "SF Mono", "Roboto Mono", "IBM Plex Mono", "Cascadia Code",
+    Menlo, Consolas, monospace;
 }
 
 @layer base {
