@@ -1,13 +1,8 @@
-import { Link } from "@tanstack/react-router";
+import { Link, type ErrorComponentProps } from "@tanstack/react-router";
 import { AlertTriangle, Home, RotateCcw } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { useLocale } from "~/hooks/use-locale";
-
-interface ErrorComponentProps {
-  error?: Error;
-  reset?: () => void;
-}
 
 export function ErrorComponent({ error, reset }: ErrorComponentProps) {
   const { t } = useLocale();
@@ -37,13 +32,13 @@ export function ErrorComponent({ error, reset }: ErrorComponentProps) {
             <CardContent className="space-y-6 pb-8 text-center">
               <p className="text-graphite">{t.error.description}</p>
 
-              {error && (
+              {error ? (
                 <div className="rounded-lg border border-hairline bg-paper2 p-4 text-left">
                   <p className="font-mono text-sm text-destructive">
-                    {error.message}
+                    {error instanceof Error ? error.message : String(error)}
                   </p>
                 </div>
-              )}
+              ) : null}
 
               <div className="space-y-4">
                 <Button
