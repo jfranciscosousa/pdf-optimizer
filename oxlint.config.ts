@@ -1,7 +1,11 @@
 import { defineConfig } from "oxlint";
 
 export default defineConfig({
-  ignorePatterns: ["src/worker/bg-worker.js", "src/worker/gs-worker.js"],
+  ignorePatterns: [
+    "src/routeTree.gen.ts",
+    "src/worker/bg-worker.js",
+    "src/worker/gs-worker.js",
+  ],
   plugins: ["react", "import", "promise", "oxc"],
   jsPlugins: ["oxlint-tailwindcss"],
   settings: {

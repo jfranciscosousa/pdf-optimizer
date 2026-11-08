@@ -12,6 +12,7 @@
     ".claude",
     ".output",
     ".tanstack",
-    "pnpm-lock.yaml"
+    "pnpm-lock.yaml",
+    "src/routeTree.gen.ts"
   ]
 }

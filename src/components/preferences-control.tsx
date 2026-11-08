@@ -43,7 +43,7 @@ export function PreferencesControl() {
           <MenuPrimitive.Trigger
             aria-label={t.common.language}
             title={t.common.language}
-            className="inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-full px-3 text-xs font-medium tracking-wide text-graphite transition-colors hover:text-ink focus-visible:text-ink focus-visible:ring-2 focus-visible:ring-stamp focus-visible:outline-none data-[popup-open]:bg-paper2 data-[popup-open]:text-ink"
+            className="inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-full px-3 text-xs font-medium tracking-wide text-graphite transition-colors hover:text-ink focus-visible:text-ink focus-visible:ring-2 focus-visible:ring-stamp focus-visible:outline-none data-popup-open:bg-paper2 data-popup-open:text-ink"
           >
             <Globe className="size-4" aria-hidden="true" />
             <span className="uppercase">{language}</span>
@@ -70,13 +70,13 @@ export function PreferencesControl() {
                         key={locale}
                         value={locale}
                         className={cn(
-                          "flex cursor-pointer items-center justify-between gap-3 rounded-md px-3 py-2 text-sm text-graphite transition-colors outline-none hover:bg-paper2 hover:text-ink focus-visible:bg-paper2 focus-visible:text-ink data-[checked]:text-ink data-[highlighted]:bg-paper2 data-[highlighted]:text-ink",
+                          "flex cursor-pointer items-center justify-between gap-3 rounded-md px-3 py-2 text-sm text-graphite transition-colors outline-none hover:bg-paper2 hover:text-ink focus-visible:bg-paper2 focus-visible:text-ink data-checked:text-ink data-highlighted:bg-paper2 data-highlighted:text-ink",
                         )}
                       >
                         {localeLabels[locale]}
                         <MenuPrimitive.RadioItemIndicator
                           keepMounted
-                          className="size-1.5 rounded-full bg-stamp opacity-0 transition-opacity data-[checked]:opacity-100"
+                          className="size-1.5 rounded-full bg-stamp opacity-0 transition-opacity data-checked:opacity-100"
                         />
                       </MenuPrimitive.RadioItem>
                     ))}
