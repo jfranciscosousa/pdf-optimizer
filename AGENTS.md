@@ -11,7 +11,7 @@ A React-based web application for client-side PDF tools: optimize (compress via 
 - **Styling**: Tailwind CSS v4
 - **UI Components**: Radix UI primitives with custom styling
 - **File Upload**: react-dropzone
-- **PDF Processing**: WebAssembly Ghostscript worker (optimize), pdf-lib worker (merge/split)
+- **PDF Processing**: Ghostscript 10.08.0 via @wasm-zoo/ghostscript workers (optimize), pdf-lib worker (merge/split)
 - **Build Tool**: Vite
 - **Package Manager**: pnpm (based on pnpm-lock.yaml)
 
@@ -38,8 +38,8 @@ src/
 ├── server/               # Server-side functions
 ├── styles/              # CSS stylesheets
 └── worker/             # Web Workers
-    ├── bg-worker.js / gs-worker.js  # Ghostscript WASM worker (optimize)
-    ├── pdf-optimizer-worker.ts      # Main-thread client for the Ghostscript worker
+    ├── ghostscript.ts              # Ghostscript CLI arguments and output validation
+    ├── pdf-optimizer-worker.ts      # Client for the package-managed Ghostscript workers
     ├── pdf-tools-worker.ts          # pdf-lib worker (merge/split)
     └── pdf-tools.ts                 # Main-thread client for the pdf-lib worker
 ```
@@ -100,6 +100,7 @@ pnpm build
 ## Important Notes
 
 - PDF processing happens entirely client-side using WebAssembly
+- Ghostscript source pins, update checks, and license requirements: `docs/ghostscript.md`
 - No server-side PDF processing or storage
 - Supports only PDF file uploads
 - Uses Web Workers for non-blocking PDF processing

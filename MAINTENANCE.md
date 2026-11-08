@@ -66,11 +66,13 @@ No package needs a hold because of a breaking API change.
 | vite                            | 8.3.5    | 8.3.6         |
 | wrangler                        | 4.157.0  | 4.158.0       |
 
-The vendored Ghostscript files remain unchanged:
+The initial maintenance update left the vendored Ghostscript files unchanged:
 `src/worker/gs-worker.js` and `public/static/gs-worker.wasm`.
 The WASM binary contains Ghostscript 9.26 resource paths. The repository has no
 build recipe or reliable release pin for this binary. Replacing it requires a
-separate WASM rebuild and PDF regression tests. Decide whether to start that work.
+separate engine update and PDF regression tests. The approved follow-up now
+replaces these files with the pinned Ghostscript 10.08.0 package. See
+[Ghostscript maintenance](docs/ghostscript.md) for the implementation and checks.
 
 The inventory also covered CI, editor configuration, agent skill metadata, and
 tracked files for other runtime manifests, Dockerfiles, and lockfiles. No Docker,

@@ -39,7 +39,10 @@ pnpm build
 - React + TypeScript
 - TanStack Router
 - Tailwind CSS
-- WebAssembly (Ghostscript)
+- WebAssembly (Ghostscript 10.08.0 via `@wasm-zoo/ghostscript`)
+
+See [Ghostscript maintenance](docs/ghostscript.md) for source pins, verification,
+update instructions, and AGPL licensing requirements.
 
 The project is deployed on Cloudflare workers.
 
