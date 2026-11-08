@@ -5,6 +5,8 @@
   "scripts": {
     "build": "vite build && tsc --noEmit",
     "dev": "vite dev",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node scripts/test-ghostscript-browser.mjs",
     "preview": "vite preview",
     "deploy": "npm run build && wrangler deploy",
     "cf-typegen": "wrangler types",
@@ -20,6 +22,7 @@
     "@tanstack/react-router": "^1.170.46",
     "@tanstack/react-router-devtools": "^1.167.2",
     "@tanstack/react-start": "^1.169.4",
+    "@wasm-zoo/ghostscript": "0.7.2",
     "accept-language": "^3.0.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

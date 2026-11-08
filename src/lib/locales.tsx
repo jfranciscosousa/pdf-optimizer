@@ -144,7 +144,13 @@ export const locales = {
     },
     license: {
       title: "License",
-      subtitle: "This software is released under the MIT License",
+      subtitle:
+        "This project includes MIT-licensed code and an AGPL-licensed PDF engine.",
+      ghostscriptTitle: "Ghostscript PDF engine",
+      ghostscriptNotice:
+        "Ghostscript uses the AGPL-3.0-or-later license. Its license and source are available below.",
+      thirdPartyNotices: "Third-party license notices",
+      ghostscriptSource: "Ghostscript source and build recipe",
       backToHome: "Back to home",
       copyright: "Copyright 2025 José Francisco Ferreira Alves de Sousa",
       mitTitle: "MIT License",
@@ -359,7 +365,14 @@ export const locales = {
     },
     license: {
       title: "Licença",
-      subtitle: "Este software é disponibilizado sob a Licença MIT",
+      subtitle:
+        "Este projeto inclui código com licença MIT e um motor de PDF com licença AGPL.",
+      ghostscriptTitle: "Motor de PDF Ghostscript",
+      ghostscriptNotice:
+        "O Ghostscript utiliza a licença AGPL-3.0-or-later. A licença e o código-fonte estão disponíveis abaixo.",
+      thirdPartyNotices: "Avisos de licenças de terceiros",
+      ghostscriptSource:
+        "Código-fonte e instruções de compilação do Ghostscript",
       backToHome: "Voltar ao início",
       copyright: "Copyright 2025 José Francisco Ferreira Alves de Sousa",
       mitTitle: "Licença MIT",

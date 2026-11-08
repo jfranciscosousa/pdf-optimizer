@@ -181,6 +181,9 @@ importers:
       '@tanstack/react-start':
         specifier: ^1.169.4
         version: 1.169.4(esbuild@0.28.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(rolldown@1.2.16)(supports-color@10.2.2)(vite@8.3.5(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))
+      '@wasm-zoo/ghostscript':
+        specifier: 0.7.2
+        version: 0.7.2
       accept-language:
         specifier: ^3.0.20
         version: 3.0.20
@@ -1607,6 +1610,9 @@ packages:
         optional: true
       oxc-transform-react:
         optional: true
+
+  '@wasm-zoo/ghostscript@0.7.2':
+    resolution: {integrity: sha512-hdrEwyyYoyRbJya/sXvPpziIDRg1kuuAHPdlNg1S/bYpWVckiD1MzWqS2Lka86Yh5xSezl+gm/RfFKP3foNXYw==}
 
   abbrev@5.0.0:
     resolution: {integrity: sha512-/XrFJgzQQQHpti1raDJC6m4ws6aNktmjBlhk8Fdlk7LwCEuDoieEJJY9OFHjfiFJFFRM2tK+Ky/IsfbbmlMu1w==}
@@ -3345,6 +3351,8 @@ snapshots:
       vite: 8.3.5(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)
     optionalDependencies:
       babel-plugin-react-compiler: 1.0.0
+
+  '@wasm-zoo/ghostscript@0.7.2': {}
 
   abbrev@5.0.0: {}
 

@@ -2,8 +2,7 @@ import { useState } from "react";
 import { optimizePdf as optimizePdfWorker } from "../worker/pdf-optimizer-worker";
 import { downloadBlobUrl } from "../lib/download";
 import pLimit from "p-limit";
-
-type OptimizationLevel = "light" | "medium" | "heavy";
+import type { OptimizationLevel } from "../worker/types";
 
 interface FileOptimizationResult {
   file: File;
@@ -71,7 +70,8 @@ async function optimizeFile(
   }
 }
 
-const limit = pLimit(4);
+// Each Ghostscript instance starts with 128 MiB of WASM memory.
+const limit = pLimit(2);
 
 export function usePdfOptimization(): UsePdfOptimizationReturn {
   const [isLoading, setIsLoading] = useState(false);

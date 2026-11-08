@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { GitHubIcon } from "~/components/icons/github";
 import { useLocale } from "~/hooks/use-locale";
+import ghostscriptManifest from "@wasm-zoo/ghostscript/manifest.json";
 
 export const Route = createFileRoute("/license")({
   head: () => ({
@@ -12,7 +13,7 @@ export const Route = createFileRoute("/license")({
       {
         name: "description",
         content:
-          "PDF Optimizer is open source, released under the MIT License.",
+          "PDF Optimizer includes MIT-licensed code and the AGPL-licensed Ghostscript PDF engine.",
       },
     ],
   }),
@@ -79,6 +80,27 @@ function LicensePage() {
         </section>
 
         <section className="divide-y divide-hairline">
+          <article className="py-10">
+            <h2 className="text-lg font-semibold text-ink">
+              {t.license.ghostscriptTitle}{" "}
+              {ghostscriptManifest.upstream.version}
+            </h2>
+            <p className="mt-4 leading-relaxed text-graphite">
+              {t.license.ghostscriptNotice}
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-ink underline underline-offset-4">
+              <li>
+                <a href="/licenses/ghostscript/NOTICES.txt">
+                  {t.license.thirdPartyNotices}
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/ttomohisa/wasm-zoo/releases/download/ghostscript-v0.7.2/ghostscript-sources-10.08.0-zoo-0.7.2.tar.gz">
+                  {t.license.ghostscriptSource}
+                </a>
+              </li>
+            </ul>
+          </article>
           <article className="py-10 first:pt-10">
             <h2 className="flex items-baseline gap-3 text-lg font-semibold text-ink">
               <span className="font-mono text-graphite">§</span>
