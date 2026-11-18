@@ -1,106 +1,84 @@
-# Maintenance update — 2026-11-08
+# Maintenance update — 2026-11-18
 
-Updated on `fs/update-maintenance` from `origin/master` at `d306181`.
+Started from `origin/master` at `eb267e8`.
 
-## Runtime and service versions
+## Runtime and CI
 
-| Item                          | Old        | New        |
-| ----------------------------- | ---------- | ---------- |
-| Node                          | 24.21.0    | 26.13.0    |
-| pnpm                          | 12.8.1     | 12.18.0    |
-| Cloudflare compatibility date | 2025-09-02 | 2026-11-08 |
-| actions/checkout              | 6.1.0      | 7.0.1      |
-| actions/setup-node            | 6.5.0      | 7.1.0      |
-| pnpm/action-setup             | 6.0.10     | 6.1.1      |
+- Node 26.13.0 → 26.13.1 and pnpm 12.18.0 → 12.21.0. Updated the local and CI pins together.
+- Cloudflare compatibility date 2026-11-08 → 2026-11-10, matching the installed Workerd release. The built Worker passed local checks. The README names Cloudflare Workers; production hosting settings were not verified.
+- Checked the pinned GitHub Actions against their latest stable tags. Checkout 7.0.1, setup-node 7.1.0, and pnpm/action-setup 6.1.1 already match.
 
-Updated `mise.toml`, `.node-version`, `package.json`, and CI pins together.
-GitHub Actions remain pinned to commit hashes.
+## Direct dependency updates
 
-Checked the [checkout migration notes](https://github.com/actions/checkout/blob/main/README.md)
-and [setup-node migration notes](https://github.com/actions/setup-node/blob/main/README.md).
-The CI workflow uses neither restricted checkout triggers nor registry authentication.
+| Package                            | Old     | New     |
+| ---------------------------------- | ------- | ------- |
+| `@tailwindcss/vite`, `tailwindcss` | 4.3.4   | 4.3.5   |
+| `@tanstack/react-router-devtools`  | 1.167.2 | 1.167.3 |
+| `@tanstack/react-start`            | 1.169.4 | 1.169.5 |
+| `lucide-react`                     | 1.67.0  | 1.72.0  |
+| `react-dropzone`                   | 20.1.4  | 20.2.0  |
+| `@cloudflare/vite-plugin`          | 1.67.0  | 1.69.1  |
+| `@oxlint/plugins`, `oxlint`        | 1.91.0  | 1.93.0  |
+| `@vitejs/plugin-react`             | 6.2.1   | 6.3.0   |
+| `oxfmt`                            | 0.76.0  | 0.78.0  |
+| `typescript-language-server`       | 6.0.3   | 6.1.0   |
+| `wrangler`                         | 4.157.0 | 4.161.0 |
 
-## Direct package updates
+Refreshed transitive dependencies. Removed the unused Babel compiler option and
+dependency: React plugin v6 does not read that option. Removed public hoisting
+for `@tanstack/react-start-server`; a fresh frozen install and build work without it.
 
-| Package                    | Old      | New      |
-| -------------------------- | -------- | -------- |
-| @base-ui/react             | 1.8.0    | 1.9.0    |
-| @tailwindcss/vite          | 4.3.3    | 4.3.4    |
-| @tanstack/react-router     | 1.170.40 | 1.170.46 |
-| @tanstack/react-start      | 1.168.59 | 1.169.4  |
-| lucide-react               | 1.48.0   | 1.67.0   |
-| react, react-dom           | 19.3.0   | 19.3.1   |
-| react-dropzone             | 20.1.2   | 20.1.4   |
-| tailwindcss                | 4.3.3    | 4.3.4    |
-| @cloudflare/vite-plugin    | 1.61.0   | 1.67.0   |
-| @oxlint/plugins            | 1.85.0   | 1.91.0   |
-| @types/node                | 26.6.3   | 26.6.6   |
-| @vitejs/plugin-react       | 6.1.1    | 6.2.1    |
-| node-gyp                   | 13.0.2   | 13.1.0   |
-| oxfmt                      | 0.70.0   | 0.76.0   |
-| oxlint                     | 1.85.0   | 1.91.0   |
-| oxlint-tailwindcss         | 1.14.0   | 1.17.1   |
-| typescript-language-server | 6.0.1    | 6.0.3    |
-| vite                       | 8.3.1    | 8.3.5    |
-| wrangler                   | 4.142.0  | 4.157.0  |
+## Release holds and prereleases
 
-Other direct packages already use their latest eligible stable versions.
-Regenerated `pnpm-lock.yaml` to refresh transitive dependencies.
+Checked on 2026-11-18. Keep the five-day minimum release age. These latest
+releases were not old enough. Recheck when they pass the age cutoff.
 
-## Held versions
+| Package                     | Selected | Latest stable |
+| --------------------------- | -------- | ------------- |
+| `@cloudflare/vite-plugin`   | 1.69.1   | 1.70.0        |
+| `@oxlint/plugins`, `oxlint` | 1.93.0   | 1.94.0        |
+| `lint-staged`               | 17.6.0   | 17.6.1        |
+| `lucide-react`              | 1.72.0   | 1.75.0        |
+| `oxfmt`                     | 0.78.0   | 0.79.0        |
+| `oxlint-tailwindcss`        | 1.17.1   | 1.17.2        |
+| `wrangler`                  | 4.161.0  | 4.164.0       |
 
-The existing `minimumReleaseAge: 7200` policy requires releases to be at least
-five days old. The following latest releases fail frozen installation under
-that policy. Kept the policy unchanged and selected the newest eligible versions.
-No package needs a hold because of a breaking API change.
+The exact Ghostscript package pin, 0.7.2 (engine 10.08.0), still matches the
+latest stable releases. Keep the pin and source notices together. See
+[Ghostscript maintenance](docs/ghostscript.md).
 
-| Package                         | Selected | Latest stable |
-| ------------------------------- | -------- | ------------- |
-| @tailwindcss/vite, tailwindcss  | 4.3.4    | 4.3.5         |
-| @tanstack/react-router-devtools | 1.167.2  | 1.167.3       |
-| @tanstack/react-start           | 1.169.4  | 1.169.5       |
-| lucide-react                    | 1.67.0   | 1.70.0        |
-| react-dropzone                  | 20.1.4   | 20.2.0        |
-| @oxlint/plugins, oxlint         | 1.91.0   | 1.92.0        |
-| oxfmt                           | 0.76.0   | 0.77.0        |
-| vite                            | 8.3.5    | 8.3.6         |
-| wrangler                        | 4.157.0  | 4.158.0       |
+The following prereleases come from upstream packages. No project override
+selects them. Checked on 2026-11-18; recheck when their parents update.
 
-The initial maintenance update left the vendored Ghostscript files unchanged:
-`src/worker/gs-worker.js` and `public/static/gs-worker.wasm`.
-The WASM binary contains Ghostscript 9.26 resource paths. The repository has no
-build recipe or reliable release pin for this binary. Replacing it requires a
-separate engine update and PDF regression tests. The approved follow-up now
-replaces these files with the pinned Ghostscript 10.08.0 package. See
-[Ghostscript maintenance](docs/ghostscript.md) for the implementation and checks.
+- The stable Cloudflare tools pin Miniflare 5.20261110.0-beta and
+  5.20261110.2-beta, and unenv 2.0.0-rc.24. Newer prereleases exist, but these
+  tools require exact versions. There is no stable release on either required major.
+- Miniflare pins youch 4.1.0-beta.10. Stable 4.1.1 exists, but Miniflare does not accept it.
+- Babel core requires gensync 1.0.0-beta.2. No stable 1.x exists.
+- Rolldown's optional WASI binding pins `@emnapi/core` and `@emnapi/runtime`
+  at 2.0.0-beta.2. A newer beta exists, but the binding requires exact pins.
+  There is no stable 2.x.
 
-The inventory also covered CI, editor configuration, agent skill metadata, and
-tracked files for other runtime manifests, Dockerfiles, and lockfiles. No Docker,
-Elixir, Erlang, or Bun runtime configuration exists. Agent skill snapshots are not
-application dependencies and remain unchanged.
+## Audit
 
-## Compatibility fixes
+The full pnpm audit reported one high finding before and after the update.
+The production-only audit also reported it. GitHub Dependabot lists the same
+[open picomatch alert](https://github.com/jfranciscosousa/pdf-optimizer/security/dependabot/75).
 
-- Use canonical Tailwind data variants and dark variant order.
-- Exclude the generated TanStack route file from formatting and linting, as its
-  generated header requires. Do not commit regenerated route output.
+- [picomatch 4.0.7 ReDoS](https://github.com/advisories/GHSA-fc5q-39xc-vjpf):
+  transitive; no patched version exists. The production dependency graph
+  reaches it through the TanStack Start and Tailwind Vite build plugins.
+  Development tooling also uses it. The built client and Worker JavaScript
+  and source maps did not contain picomatch, so it is not reachable in that
+  production bundle. Recheck when a patch is available. No suppression or override.
 
 ## Verification
 
-Ran with Node 26.13.0 and pnpm 12.18.0:
+Frozen install, standalone typecheck, lint, format check, 12 unit tests, and
+production build passed. The local Worker returned HTTP 200 for all six routes.
+The Ghostscript browser suite passed, including three compression profiles,
+malformed-input recovery, and license assets. No database is configured.
+The build still warns about a client chunk larger than 500 kB.
 
-- `pnpm install --frozen-lockfile`: passed, including supply-chain policies.
-- `pnpm exec tsc --noEmit`: passed.
-- `pnpm run lint`: passed without diagnostics.
-- `pnpm run format:check`: passed.
-- `pnpm run build`: passed for client and Cloudflare server bundles.
-- `pnpm outdated --format json`: returned no age-eligible updates.
-- Local-only Wrangler HTTP checks: all six pages and the WASM asset returned 200.
-- Tests: no test script or test suite exists. No browser PDF processing test ran.
-
-A parallel lint/build run hit a Tailwind design-system timeout. The sequential
-lint run passed. Build warnings remain for Ghostscript browser-externalized Node
-modules, a client chunk above 500 kB, and a CSS sourcemap.
-GitHub-hosted CI was not run locally.
-
-No deployment, push, PR, secret change, or environment-file change occurred.
+GitHub-hosted CI, production checks, and PDF merge/split browser operations
+were not run. No push, deployment, or production write occurred.
