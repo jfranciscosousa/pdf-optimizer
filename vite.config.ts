@@ -19,10 +19,6 @@ export default defineConfig(({ command }) => ({
     tanstackStart(),
     viteReact({
       exclude: [/src\/worker\//],
-      // @ts-expect-error
-      babel: {
-        plugins: ["babel-plugin-react-compiler"],
-      },
     }),
     tailwindcss(),
   ],

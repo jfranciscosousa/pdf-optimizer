@@ -100,7 +100,6 @@ pnpm build
 ## Important Notes
 
 - PDF processing happens entirely client-side using WebAssembly
-- Ghostscript source pins, update checks, and license requirements: `docs/ghostscript.md`
 - No server-side PDF processing or storage
 - Supports only PDF file uploads
 - Uses Web Workers for non-blocking PDF processing
@@ -108,6 +107,4 @@ pnpm build
 
 ## Runtime and dependency maintenance
 
-- `minimumReleaseAge` in `pnpm-workspace.yaml` is five days (7200 minutes). It holds some packages on older releases. `MAINTENANCE.md` lists the held packages and the reasons. Keep it current.
-- Set `compatibility_date` in `wrangler.jsonc` to a date that the installed Wrangler supports.
-- Checks: `pnpm run lint`, `pnpm test`, and the production build. `pnpm run test:browser` checks the Ghostscript worker in a browser.
+[Runtime and dependency maintenance guide](MAINTENANCE.md)
