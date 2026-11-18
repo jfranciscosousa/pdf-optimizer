@@ -100,7 +100,6 @@ pnpm build
 ## Important Notes
 
 - PDF processing happens entirely client-side using WebAssembly
-- Ghostscript source pins, update checks, and license requirements: `docs/ghostscript.md`
 - No server-side PDF processing or storage
 - Supports only PDF file uploads
 - Uses Web Workers for non-blocking PDF processing
@@ -108,9 +107,4 @@ pnpm build
 
 ## Runtime and dependency maintenance
 
-- Keep Node and pnpm aligned across `mise.toml`, `.node-version`, `package.json`, and CI as applicable.
-- Keep the five-day `minimumReleaseAge` in `pnpm-workspace.yaml`. See `MAINTENANCE.md` for release-age holds and upstream prerelease dependencies.
-- Set `compatibility_date` in `wrangler.jsonc` to a date that the installed Workerd supports. Check the built app with local Wrangler on an unused loopback port and a fresh persistence directory. The app has no database bindings.
-- Keep the exact `@wasm-zoo/ghostscript` pin tied to the engine, provenance, and source notices in `docs/ghostscript.md`. Version 0.7.2 was still the latest stable package on 2026-11-18. Recheck when a new package or engine is published.
-- `picomatch` 4.0.7 has an open high-severity ReDoS advisory. Build tools bring it in through production and development dependency paths. The client and server bundles did not contain it when checked on 2026-11-18. Recheck when a patched release is available. See `MAINTENANCE.md`.
-- Run frozen install, typecheck, lint, format check, unit tests, build, and `pnpm run test:browser`. Builds can rewrite the tracked route tree; do not commit the generated diff.
+[Runtime and dependency maintenance guide](MAINTENANCE.md)

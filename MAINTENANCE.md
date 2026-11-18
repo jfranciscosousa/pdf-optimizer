@@ -2,6 +2,14 @@
 
 Started from `origin/master` at `eb267e8`.
 
+## Maintenance procedure
+
+- Keep Node aligned in `mise.toml`, `.node-version`, and CI. Keep pnpm aligned in `mise.toml`, `package.json`, and CI.
+- Set `compatibility_date` in `wrangler.jsonc` to a date that the installed Workerd supports.
+- Run `pnpm install --frozen-lockfile`, `pnpm exec tsc --noEmit`, `pnpm run lint`, `pnpm run format:check`, `pnpm test`, and `pnpm build`.
+- Run `pnpm run test:browser` against the built app. Start Wrangler in local mode on an unused loopback port with a fresh persistence directory. The app has no database bindings.
+- Builds can rewrite the tracked route tree. Do not commit the generated diff.
+
 ## Runtime and CI
 
 - Node 26.13.0 → 26.13.1 and pnpm 12.18.0 → 12.21.0. Updated the local and CI pins together.
@@ -30,7 +38,7 @@ for `@tanstack/react-start-server`; a fresh frozen install and build work withou
 
 ## Release holds and prereleases
 
-Checked on 2026-11-18. Keep the five-day minimum release age. These latest
+Checked on 2026-11-18. Keep the five-day `minimumReleaseAge` in `pnpm-workspace.yaml`. These latest
 releases were not old enough. Recheck when they pass the age cutoff.
 
 | Package                     | Selected | Latest stable |
@@ -43,9 +51,11 @@ releases were not old enough. Recheck when they pass the age cutoff.
 | `oxlint-tailwindcss`        | 1.17.1   | 1.17.2        |
 | `wrangler`                  | 4.161.0  | 4.164.0       |
 
-The exact Ghostscript package pin, 0.7.2 (engine 10.08.0), still matches the
-latest stable releases. Keep the pin and source notices together. See
-[Ghostscript maintenance](docs/ghostscript.md).
+The exact `@wasm-zoo/ghostscript` pin, 0.7.2 (engine 10.08.0), matched the
+latest stable releases on 2026-11-18. Recheck when a new package or engine is
+published. Keep the package pin, engine, provenance, and source notices
+aligned. See [Ghostscript maintenance](docs/ghostscript.md) for source pins,
+update checks, and license requirements.
 
 The following prereleases come from upstream packages. No project override
 selects them. Checked on 2026-11-18; recheck when their parents update.
@@ -61,7 +71,7 @@ selects them. Checked on 2026-11-18; recheck when their parents update.
 
 ## Audit
 
-The full pnpm audit reported one high finding before and after the update.
+On 2026-11-18, the full pnpm audit reported one high finding before and after the update.
 The production-only audit also reported it. GitHub Dependabot lists the same
 [open picomatch alert](https://github.com/jfranciscosousa/pdf-optimizer/security/dependabot/75).
 
